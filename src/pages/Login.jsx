@@ -68,6 +68,16 @@ const useStyles = makeStyles({
 const Login = () => {
   const classes = useStyles();
 
+  useEffect(() => {
+    myfunction();
+  }, []);
+  
+
+  const componentDidUpdate = () => {  //Used for every time component updates
+    myfunction();
+  }
+
+ const myfunction = () => {
   const sign_in_btn = document.querySelector("#sign-in-btn");
   const sign_up_btn = document.querySelector("#sign-up-btn");
   const container = document.querySelector(".container");
@@ -79,6 +89,7 @@ const Login = () => {
   sign_in_btn.addEventListener("click", () => {
     container.classList.remove("sign-up-mode");
   });
+ }
 
   return (
     <div className={classes.containerLogin}>
@@ -124,7 +135,7 @@ const Login = () => {
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
                 ex ratione. Aliquid!
               </p>
-              <button class="btn transparent" id="sign-up-btn">
+              <button class="btn transparent" id="sign-up-btn" onClick={componentDidUpdate}>
                 Sign up
               </button>
             </div>
@@ -137,7 +148,7 @@ const Login = () => {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
                 laboriosam ad deleniti.
               </p>
-              <button class="btn transparent" id="sign-in-btn">
+              <button class="btn transparent" id="sign-in-btn" onClick={componentDidUpdate}>
                 Sign in
               </button>
             </div>
