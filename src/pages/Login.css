@@ -27,6 +27,11 @@ input {
   left: 0;
 }
 
+.container-svg-ucab-logo {
+  width: 110pt;
+  margin: auto;
+}
+
 .signin-signup {
   position: absolute;
   top: 50%;
@@ -249,6 +254,11 @@ form.sign-in-form {
     transition: 1s 0.8s ease-in-out;
   }
 
+  .container-svg-ucab-logo {
+    width: 50pt;
+    margin: auto;
+  }
+
   .signin-signup,
   .container.sign-up-mode .signin-signup {
     left: 50%;
@@ -344,6 +354,11 @@ form.sign-in-form {
   }
   .container {
     padding: 1.5rem;
+  }
+
+  .container-svg-ucab-logo {
+    width: 50pt;
+    margin: auto;
   }
 
   .container:before {
