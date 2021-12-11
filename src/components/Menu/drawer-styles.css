@@ -1,0 +1,86 @@
+.navDrawer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+  }
+  
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    background: #fff;
+  }
+  
+  .buttonDrawer {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 18px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: transparent;
+  }
+  
+  .ulDrawer,
+  .liDrawer {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .ulDrawer {
+    padding: 25px;
+    position: absolute;
+    top: 100px;
+    width: 300px;
+    margin: auto;
+  }
+  
+  .liDrawer {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: #fafafa;
+    margin-bottom: 10pt;
+    border-radius: 3pt;
+  }
+  
+  .icon-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex: 40px 0;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .text-placeholder {
+    border-radius: 5px;
+    width: 200px;
+    height: 25px;
+    margin-left: 20pt;
+    flex: 1;
+  }
+  
+  .refresh {
+    padding: 10px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
