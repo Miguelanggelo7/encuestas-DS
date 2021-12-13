@@ -5,6 +5,7 @@
     bottom: 0;
     width: 300px;
     filter: drop-shadow(2px 2px 2px rgba(50, 50, 0, 0.5));
+    z-index: 999;
   }
   
   .background {
@@ -14,6 +15,7 @@
     bottom: 0;
     width: 300px;
     background: #fff;
+    z-index: 999;
   }
   
   .buttonDrawer {
@@ -27,12 +29,14 @@
     height: 50px;
     border-radius: 50%;
     background: transparent;
+    z-index: 999;
   }
   
   .ulDrawer,
   .liDrawer {
     margin: 0;
     padding: 0;
+    z-index: 999;
   }
   
   .ulDrawer {
