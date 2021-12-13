@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "./use-dimensions";
 import { MenuToggle } from "./MenuToggle";
@@ -29,6 +29,18 @@ const Drawer = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
+
+  useEffect(() => {
+      return isOpen ? componentWillUnMount() : componentWillMount()
+  }, [isOpen]);
+
+  const componentWillMount = () => {  
+    document.body.style.overflow = "auto";
+  }
+  
+  const componentWillUnMount = () => { 
+    document.body.style.overflow = "hidden";
+  }
 
   return (
     <motion.nav
