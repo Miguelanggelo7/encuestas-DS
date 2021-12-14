@@ -8,7 +8,8 @@ function App() {
   return (
     <div className="App">
       <Drawer/>
-      <div style={{marginTop: '60pt'}}>
+      <div id="blackground"/>
+      <div id="container-app">
         <Table/>
         <Table/>
       </div>

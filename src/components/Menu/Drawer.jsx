@@ -36,10 +36,14 @@ const Drawer = () => {
 
   const componentWillMount = () => {  
     document.body.style.overflow = "auto";
+    document.getElementById("container-app").style.marginLeft = "0";
+    document.getElementById("blackground").style.display = "none";
   }
   
   const componentWillUnMount = () => { 
     document.body.style.overflow = "hidden";
+    document.getElementById("container-app").style.marginLeft = "300px";
+    document.getElementById("blackground").style.display = "flex";
   }
 
   return (
