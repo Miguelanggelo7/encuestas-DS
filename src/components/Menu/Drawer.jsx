@@ -36,14 +36,16 @@ const Drawer = () => {
 
   const componentWillMount = () => {  
     document.body.style.overflow = "auto";
-    document.getElementById("container-app").style.marginLeft = "0";
-    document.getElementById("blackground").style.display = "none";
+    document.getElementById("blackground").style.transitionDelay = ".7s";
+    document.getElementById("blackground").style.opacity = "0";
+    document.getElementById("container-app").style.marginRight = "0px";
   }
   
   const componentWillUnMount = () => { 
     document.body.style.overflow = "hidden";
-    document.getElementById("container-app").style.marginLeft = "300px";
-    document.getElementById("blackground").style.display = "flex";
+    document.getElementById("blackground").style.transitionDelay = "0s";
+    document.getElementById("container-app").style.marginRight = "10px";
+    document.getElementById("blackground").style.opacity = "1";
   }
 
   return (
