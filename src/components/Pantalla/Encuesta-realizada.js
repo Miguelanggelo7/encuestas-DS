@@ -16,7 +16,7 @@ const columns = [
 
 function EncuestaRealizada () {
   return (
-    <div style={{position: 'absolute',left: 520, height: 400, width: 820, fontSize: 15 }}>
+    <div style={{position: 'relative', left: 520, height: 400, width: 820, fontSize: 15 }}>
       <MaterialTable
         title = "Encuestas Realizadas"
         data = {data}
