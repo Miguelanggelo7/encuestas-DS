@@ -8,6 +8,8 @@ import SaveIcon from '@mui/icons-material/Save';
 import PrintIcon from '@mui/icons-material/Print';
 import ShareIcon from '@mui/icons-material/Share';
 
+
+
 const actions = [
   { icon: <FileCopyIcon />, name: 'Copy' },
   { icon: <SaveIcon />, name: 'Save' },
@@ -17,12 +19,11 @@ const actions = [
 
 export default function BasicSpeedDial() {
   return (
-    <div>
-    <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
+    <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 ,}}>
       <SpeedDial
         ariaLabel="SpeedDial basic example"
-        sx={{ position: 'absolute', bottom: 150, left:30}}
         icon={<SpeedDialIcon />}
+        sx={{ position: 'absolute', bottom: -210, left:32,  }}
         direction = "down"
       >
         {actions.map((action) => (
@@ -34,6 +35,5 @@ export default function BasicSpeedDial() {
         ))}
       </SpeedDial>
     </Box>
-    </div>
   );
 }

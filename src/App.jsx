@@ -8,17 +8,25 @@ import BarCharts from './components/graphics/BarCharts';
 import BasicSpeedDial from './components/Pantalla/SpeedDial';
 import IconButton from './components/Pantalla/buttonHome';
 
+
+
 function App() {
   return (
     <div>
-      <IconButton/>
-      <EncuestaRealizada/>
-      <BasicSpeedDial/>
+      <div style = {{position: 'fixed'}}>
+        <IconButton/>
+        <BasicSpeedDial/>
+      </div>
+        <EncuestaRealizada/>
+        <EncuestaRealizada/>
+        <EncuestaRealizada/>
     </div>
   );
 }
 
 export default App;
+
+
 
 
 // <Drawer/>
