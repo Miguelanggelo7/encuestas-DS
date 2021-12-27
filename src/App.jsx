@@ -11,9 +11,11 @@ import IconButton from './components/Pantalla/buttonHome';
 function App() {
   return (
     <div>
-      <IconButton/>
+      <div>
+        <BasicSpeedDial/>
+      </div>
       <EncuestaRealizada/>
-      <BasicSpeedDial/>
+    
     </div>
   );
 }
