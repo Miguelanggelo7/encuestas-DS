@@ -19,10 +19,10 @@ const actions = [
 export default function BasicSpeedDial() {
   return (
   
-   
+    <div style={{position:'fixed'}}>
       <SpeedDial
         ariaLabel="SpeedDial basic example"
-        sx={{ position: 'absolute', bottom: 150, left:16}}
+        sx={{ position: 'absolute',top:10, left:10}}
         FabProps={{
           size: "medium",
           style: { backgroundColor: "green",borderRadius:35 }
@@ -39,7 +39,7 @@ export default function BasicSpeedDial() {
           />
         ))}
       </SpeedDial>
-
+     </div>
  
   );
 }

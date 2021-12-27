@@ -8,13 +8,22 @@ import BarCharts from './components/graphics/BarCharts';
 import BasicSpeedDial from './components/Pantalla/SpeedDial';
 import IconButton from './components/Pantalla/buttonHome';
 
+
 function App() {
   return (
-    <div>
+    <div style={{alignContent:'flex-start'}}>
+      <BasicSpeedDial/>
+    
       <div>
-        <BasicSpeedDial/>
+        <EncuestaRealizada/>
       </div>
-      <EncuestaRealizada/>
+      <div>
+        <EncuestaRealizada/>
+      </div>
+      <div>
+        <EncuestaRealizada/>
+      </div>
+     
     
     </div>
   );
