@@ -10,8 +10,7 @@ function App() {
       <Drawer/>
       <div id="blackground"/>
       <div id="container-app">
-        <Table/>
-        <Table/>
+        <Login />
       </div>
       
     </div>

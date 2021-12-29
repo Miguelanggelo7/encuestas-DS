@@ -70,8 +70,12 @@ const Login = () => {
   }, []);
   
 
-  const componentDidUpdate = () => {  //Used for every time component updates
-    myfunction();
+  const register = () => {
+
+  }
+
+  const login = () => {
+
   }
 
   const myfunction = () => {
@@ -203,7 +207,7 @@ const Login = () => {
                 <br/>
                 ¿Eres nuevo? ¡Registrate aquí!
               </p>
-              <button class="btn transparent" id="sign-up-btn" onClick={componentDidUpdate}>
+              <button class="btn transparent" id="sign-up-btn" onClick={register}>
                 Registrarse
               </button>
             </div>
@@ -261,7 +265,7 @@ const Login = () => {
               <p>
                 ¿Ya tienes cuenta? ¡Inicia sesión aquí!
               </p>
-              <button class="btn transparent" id="sign-in-btn" onClick={componentDidUpdate}>
+              <button class="btn transparent" id="sign-in-btn" onClick={login}>
                 Iniciar Sesión
               </button>
             </div>
