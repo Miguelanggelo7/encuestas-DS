@@ -113,8 +113,6 @@ const Login = () => {
     });
   }
 
-
-
   const registerUser = async () => {
     try {
       await register(registerEmail, registerPassword);
