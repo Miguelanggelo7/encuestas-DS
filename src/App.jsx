@@ -18,6 +18,8 @@ function App() {
                 <Route exact path="/" auth>
                   <Drawer />
                   <Table/>
+                  <Table/>
+                  <Table/>
                 </Route>
                 <Route path="/auth">
                   <Login/>
