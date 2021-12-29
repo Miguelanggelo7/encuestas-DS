@@ -12,9 +12,9 @@ function App() {
     <div className="App">
       <UserProvider>
         <div id="blackground"/>
-          <Router>
-            <Switch>
-              <div id="container-app">
+          <div id="container-app">
+            <Router>
+              <Switch>
                 <Route exact path="/" auth>
                   <Drawer />
                   <Table/>
@@ -24,9 +24,9 @@ function App() {
                 <Route path="/auth">
                   <Login/>
                 </Route>
-              </div>
-            </Switch>
-          </Router>
+              </Switch>
+            </Router>
+          </div>
       </UserProvider> 
     </div>
   );
