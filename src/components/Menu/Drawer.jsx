@@ -38,6 +38,7 @@ const Drawer = () => {
     document.body.style.overflow = "auto";
     document.getElementById("blackground").style.transitionDelay = ".7s";
     document.getElementById("blackground").style.opacity = "0";
+    document.getElementById("blackground").style.zIndex = "0";
     document.getElementById("container-app").style.marginRight = "0px";
   }
   
@@ -46,6 +47,7 @@ const Drawer = () => {
     document.getElementById("blackground").style.transitionDelay = "0s";
     document.getElementById("container-app").style.marginRight = "10px";
     document.getElementById("blackground").style.opacity = "1";
+    document.getElementById("blackground").style.zIndex = "997";
   }
 
   return (
