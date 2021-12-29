@@ -11,19 +11,20 @@ function App() {
   return (
     <div className="App">
       <UserProvider>
-        <Router>
-          <Switch>
-            <div id="blackground"/>
-            <div id="container-app">
-              <Route exact path="/" auth>
-                <Table/>
-              </Route>
-              <Route path="/login">
-                <Login/>
-              </Route>
-            </div>
-          </Switch>
-        </Router>
+        <div id="blackground"/>
+          <Router>
+            <Switch>
+              <div id="container-app">
+                <Route exact path="/" auth>
+                  <Drawer />
+                  <Table/>
+                </Route>
+                <Route path="/auth">
+                  <Login/>
+                </Route>
+              </div>
+            </Switch>
+          </Router>
       </UserProvider> 
     </div>
   );

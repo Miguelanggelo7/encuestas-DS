@@ -15,14 +15,14 @@ export const Route = ({ children, auth, ...props }) => {
           <Redirect 
             exact
             to={{
-              pathname: auth ? "/login" : "/",
+              pathname: auth ? "/auth" : "/",
               state: { from: location }
             }}
           />
         )
       }
     >
-      
+    
     </OldRoute>
   );
 };  

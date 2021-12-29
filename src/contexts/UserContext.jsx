@@ -1,5 +1,3 @@
-import { Snackbar } from '@mui/material';
-import { set } from 'firebase/database';
 import React, { useContext, useState, useEffect } from 'react';
 import { auth } from "../firebase/config";
 import { onAuthStateChanged } from "../firebase/functions";
