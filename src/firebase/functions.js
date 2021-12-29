@@ -1,5 +1,10 @@
 import { ref, set } from "firebase/database";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  signOut, 
+  onAuthStateChanged 
+} from "firebase/auth";
 import { database, auth } from "./config";
 
 const insertData = async () => {
@@ -40,4 +45,8 @@ const signOutUser = async () => {
   }
 }
 
-export { insertData, register, login, signOutUser };
+const getCurrentUser = async () => {
+  return auth.currentUser;
+}
+
+export { insertData, register, login, signOutUser, getCurrentUser, onAuthStateChanged };
