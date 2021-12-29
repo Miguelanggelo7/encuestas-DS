@@ -1,5 +1,6 @@
-import { ref, set } from "firebase/database"
-import { database } from "./config"
+import { ref, set } from "firebase/database";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { database, auth } from "./config";
 
 const insertData = async () => {
   try {
@@ -15,8 +16,28 @@ const insertData = async () => {
   }
 };
 
-const registerUser = async (user) => {
-
+const register = async (email, password) => {
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+  } catch (err) {
+    throw err;
+  }
 }
 
-export { insertData };
+const login = async (email, password) => {
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+  } catch (err) {
+    throw err;
+  }
+}
+
+const signOutUser = async () => {
+  try {
+    await signOut(auth);
+  } catch (err) {
+    throw err;
+  }
+}
+
+export { insertData, register, login, signOutUser };
