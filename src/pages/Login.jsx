@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { 
     makeStyles, 
 } from "@material-ui/core";
@@ -11,6 +11,7 @@ import {
   EmailOutlined,
 } from "@mui/icons-material";
 import { motion } from "framer-motion";
+import { register, login } from "../firebase/functions";
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -64,29 +65,16 @@ const useStyles = makeStyles({
 
 const Login = () => {
   const classes = useStyles();
+  const [ name, setName ] = useState("");
+  const [ registerEmail, setRegisterEmail ] = useState("");
+  const [ registerPassword, setRegisterPassword ] = useState("");
+  const [ loginEmail, setLoginEmail ] = useState("");
+  const [ loginPassword, setLoginPassword ] = useState("");
 
   useEffect(() => {
     myfunction();
   }, []);
   
-
-  const componentDidUpdate = () => {  //Used for every time component updates
-    myfunction();
-  }
-
-  const myfunction = () => {
-    const sign_in_btn = document.querySelector("#sign-in-btn");
-    const sign_up_btn = document.querySelector("#sign-up-btn");
-    const container = document.querySelector(".container");
-    
-    sign_up_btn.addEventListener("click", () => {
-      container.classList.add("sign-up-mode");
-    });
-
-    sign_in_btn.addEventListener("click", () => {
-      container.classList.remove("sign-up-mode");
-    });
-  }
 
   const icon = {
     hidden: {
@@ -111,6 +99,40 @@ const Login = () => {
     }
   };
 
+  const myfunction = () => {
+    const sign_in_btn = document.querySelector("#sign-in-btn");
+    const sign_up_btn = document.querySelector("#sign-up-btn");
+    const container = document.querySelector(".container");
+    
+    sign_up_btn.addEventListener("click", () => {
+      container.classList.add("sign-up-mode");
+    });
+
+    sign_in_btn.addEventListener("click", () => {
+      container.classList.remove("sign-up-mode");
+    });
+  }
+
+
+
+  const registerUser = async () => {
+    try {
+      await register(registerEmail, registerPassword);
+    } catch (err) {
+      // TODO: Handle error
+      alert("Ha ocurrido un error");
+    }
+  }
+
+  const loginUser = async () => {
+    try {
+      await login(loginEmail, loginPassword);
+    } catch (err) {
+      // TODO: Handle error
+      alert("Ha ocurrido un error");
+    }
+  }
+
   return (
     <div className={classes.containerLogin}>
       <div class="container">
@@ -120,29 +142,44 @@ const Login = () => {
               <h2 class="title">Iniciar Sesión</h2>
               <div class="input-field">
                 <PersonOutlined className={classes.inputIcon}/>
-                <input type="text" placeholder="Usuario" />
+                <input 
+                  type="text" placeholder="Correo eléctronico"  value={ loginEmail }
+                  onChange={(event) => setLoginEmail(event.target.value)}
+                />
               </div>
               <div class="input-field">
                 <LockOutlined className={classes.inputIcon}/>
-                <input type="password" placeholder="Contraseña" />
+                <input 
+                  type="password" placeholder="Contraseña" value={ loginPassword }
+                  onChange={(event) => setLoginPassword(event.target.value)}
+                />
               </div>
-              <input type="submit" value="Ingresar" class="btn solid" />
+              <input type="button" value="Ingresar" class="btn solid" onClick={loginUser}/>
             </form>
             <form action="#" class="sign-up-form">
               <h2 class="title">Registrarse</h2>
               <div class="input-field">
                 <PersonOutlined className={classes.inputIcon}/>
-                <input type="text" placeholder="Usuario" />
+                <input 
+                  type="text" placeholder="Nombre y apellido" value={ name }
+                  onChange={(event) => setName(event.target.value)}
+                />
               </div>
               <div class="input-field">
                 <EmailOutlined className={classes.inputIcon}/>
-                <input type="email" placeholder="Email" />
+                <input 
+                  type="email" placeholder="Correo eléctronico" value={ registerEmail }
+                  onChange={(event) => setRegisterEmail(event.target.value)}
+                />
               </div>
               <div class="input-field">
                 <LockOutlined className={classes.inputIcon}/>
-                <input type="password" placeholder="Contraseña" />
+                <input 
+                  type="password" placeholder="Contraseña"  value={ registerPassword }
+                  onChange={(event) => setRegisterPassword(event.target.value)}
+                />
               </div>
-              <input type="submit" class="btn" value="Registrarse" />
+              <input type="button" class="btn" value="Registrarse" onClick={registerUser}/>
             </form>
           </div>
         </div>
@@ -203,7 +240,12 @@ const Login = () => {
                 <br/>
                 ¿Eres nuevo? ¡Registrate aquí!
               </p>
-              <button class="btn transparent" id="sign-up-btn" onClick={componentDidUpdate}>
+              <button class="btn transparent" id="sign-up-btn"
+                onClick={() => {
+                  setLoginEmail("");
+                  setLoginPassword("");
+                }}
+              >
                 Registrarse
               </button>
             </div>
@@ -261,7 +303,13 @@ const Login = () => {
               <p>
                 ¿Ya tienes cuenta? ¡Inicia sesión aquí!
               </p>
-              <button class="btn transparent" id="sign-in-btn" onClick={componentDidUpdate}>
+              <button class="btn transparent" id="sign-in-btn" 
+                onClick={() => {
+                  setRegisterEmail("");
+                  setRegisterPassword("");
+                  setName("");
+                }}
+              >
                 Iniciar Sesión
               </button>
             </div>

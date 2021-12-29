@@ -9,7 +9,7 @@ import {
 } from "@mui/icons-material";
 import Fade from "react-reveal/Fade";
 import {
-    RiFileExcel2Line
+  RiFileExcel2Line
 } from "react-icons/ri";
 import XLSX from "xlsx";
 
@@ -29,11 +29,14 @@ const useStyles = makeStyles({
   },
 });
 
+
+
 export default function Table({
   title,
   selection,
   ...props
 }) {
+
   const classes = useStyles();
 
   const Title = <h1>{title}</h1>;
