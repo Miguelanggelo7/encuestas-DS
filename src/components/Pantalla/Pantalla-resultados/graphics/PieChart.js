@@ -33,8 +33,12 @@ function PieChart  () {
           },
         ],
       }}
-      height = {10}
+      height = {500}
       width = {10}
+      options = {{
+        maintainAspectRatio: false,
+        responsive: true,
+      }}
         />
     </div>
   );

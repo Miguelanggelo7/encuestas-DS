@@ -1,0 +1,192 @@
+.component1 {
+  padding: 0 2.03px 7.56px 0;
+}
+.rectangle1 {
+  width: 100%;
+  height: 100%;
+  background-color: $white;
+  border-radius: 51px;
+  position: relative;
+}
+.chart01 {
+  width: calc(26.7% - 116.17px);
+  height: calc(82.93% - 97.95px);
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  padding: 62.01px 64.39px 35.94px 51.78px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  right: 61.89px;
+  top: 7px;
+}
+.chartPie {
+  position: absolute;
+  width: 320.76px;
+  height: 0.83px;
+  right: 150.54px;
+  top: 20px;
+}
+.flexWrapperOne {
+  display: flex;
+  align-items: flex-start;
+}
+.relativeWrapperOne {
+  margin-top: 3.98px;
+  margin-right: 0.73px;
+  position: relative;
+}
+.legends {
+  padding: 0.86px 0 0 0.15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+.group21 {
+  width: 9.07px;
+  height: 8.33px;
+  background-color: $s;
+  margin-bottom: 17.76px;
+  border-radius: 6px;
+}
+.group23 {
+  width: 9.07px;
+  height: 8.33px;
+  background-color: rgba(239, 239, 255, 1);
+  margin-left: 156.27px;
+  border-radius: 6px;
+}
+.group22 {
+  width: 9.07px;
+  height: 8.33px;
+  background-color: $scf;
+  border-radius: 6px;
+  position: absolute;
+  right: -0.15px;
+  top: 0;
+}
+.group20 {
+  width: 9.07px;
+  height: 8.33px;
+  background-color: rgba(205, 210, 253, 1);
+  border-radius: 6px;
+  position: absolute;
+  left: 0;
+  top: 27.81px;
+}
+.num40 {
+  height: 45.35%;
+  width: 19.94%;
+  font-family: "Inter";
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: $transparent-black;
+  display: flex;
+  position: absolute;
+  right: 160.27px;
+  top: -2.98px;
+}
+.num10 {
+  height: 45.35%;
+  width: 19.94%;
+  font-family: "Inter";
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: $transparent-black;
+  display: flex;
+  position: absolute;
+  right: 160.27px;
+  bottom: -4.74px;
+}
+.opcion3 {
+  height: 16px;
+  width: 79px;
+  font-family: "Inter";
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: $black;
+  display: flex;
+  position: absolute;
+  left: -80.22px;
+  bottom: -4.74px;
+}
+.opcion1 {
+  height: 16px;
+  width: 79px;
+  font-family: "Inter";
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: $black;
+  display: flex;
+  position: absolute;
+  left: -80.22px;
+  top: -2.98px;
+}
+.flexWrapperTwo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.relativeWrapperTwo {
+  position: relative;
+  &:not(:last-of-type) {
+    margin-bottom: 8px;
+  }
+}
+.num30 {
+  height: 100%;
+  width: 41.77%;
+  font-family: "Inter";
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: $transparent-black;
+  display: flex;
+  position: absolute;
+  right: 120px;
+  top: 10;
+}
+.opcion2 {
+  height: 16px;
+  width: 79px;
+  font-family: "Inter";
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: $black;
+  display: flex;
+  position: relative;
+  left: -140.22px;
+  top: -2.98px;
+}
+.pregunta1TextoDeLaPreguntaSelec {
+  height: 26.45%;
+  width: 52.62%;
+  display: flex;
+  position: absolute;
+  left: 103.51px;
+  top: 39px;
+  font-family: "Inter";
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 40px;
+  color: $transparent-black-2;
+}
+.pregunta1TextoDeLaPreguntaSelecEmphasis0 {
+  font-family: "Inter";
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 40px;
+  color: $black;
+}
+.button {
+  position: absolute;
+  left: 292.51px;
+  bottom: 150.39px;
+}

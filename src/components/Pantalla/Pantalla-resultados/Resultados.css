@@ -1,0 +1,59 @@
+/* Resultados Encuesta #<ID> */
+
+
+.Titulo_Resultado{
+
+
+
+  /* Heading/H1 */
+
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 42px;
+  line-height: 98px;
+  justify-content: center;
+
+  display: flex;
+  /* or 136% */
+
+  font-feature-settings: 'salt' on, 'liga' off;
+
+  color: rgba(32, 34, 42, 1);
+}
+
+.Rectangle1{
+  position: absolute;
+  width: 1300.76px;
+  height: 501.83px;
+  left: 32.54px;
+  top: 217.57px;
+
+  background: #FEFEFE;
+  border-radius: 51px;
+
+}
+/* Rectangle1 transform: matrix(1, -0.01, -0.01, 1, 0, 0);*/
+.Rectangle2{
+  position: absolute;
+  width: 1300.76px;
+  height: 500.83px;
+  left: 32.54px;
+  top: 750.57px;
+
+  background: #FEFEFE;
+  border-radius: 51px;
+
+}
+/* Rectangle2 transform: matrix(1, -0.01, -0.01, 1, 0, 0);*/
+
+.graphics{
+  position: absolute;
+  width: 1300.76px;
+  height: 500.83px;
+  left: 32.54px;
+  top: 620.57px;
+
+  background: #FEFEFE;
+  border-radius: 51px;
+}

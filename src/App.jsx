@@ -4,28 +4,36 @@ import './components/Menu/drawer-styles.css';
 import Login from './pages/Login';
 import Table from './components/Table';
 import EncuestaRealizada from './components/Pantalla/Encuesta-realizada';
-import BarCharts from './components/graphics/BarCharts';
+import BarCharts from './components/Pantalla/Pantalla-resultados/graphics/BarCharts';
+import PieChart from './components/Pantalla/Pantalla-resultados/graphics/PieChart';
 import BasicSpeedDial from './components/Pantalla/SpeedDial';
 import IconButton from './components/Pantalla/buttonHome';
-
-
+import Resultados from './components/Pantalla/Pantalla-resultados/Resultados';
+import './components/Pantalla/Pantalla-resultados/Resultados.css';
 
 function App() {
   return (
-    <div>
-      <div style = {{position: 'fixed'}}>
-        <IconButton/>
-        <BasicSpeedDial/>
-      </div>
-        <EncuestaRealizada/>
-        <EncuestaRealizada/>
-        <EncuestaRealizada/>
+    <div style={{alignContent:'flex-start'}}>
+        <div>
+          <Resultados/>
+        </div>
+      <BasicSpeedDial/>
     </div>
   );
 }
 
 export default App;
 
+
+// <div>
+//   <EncuestaRealizada/>
+// </div>
+// <div>
+//   <EncuestaRealizada/>
+// </div>
+// <div>
+//   <EncuestaRealizada/>
+// </div>
 
 
 

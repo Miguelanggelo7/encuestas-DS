@@ -7,33 +7,41 @@ import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 import PrintIcon from '@mui/icons-material/Print';
 import ShareIcon from '@mui/icons-material/Share';
+import HomeIcon from '@mui/icons-material/Home';
+import PlusIcon from '@mui/icons-material/Add';
+import BurgerIcon from '@mui/icons-material/Menu';
 
 
 
 const actions = [
-  { icon: <FileCopyIcon />, name: 'Copy' },
-  { icon: <SaveIcon />, name: 'Save' },
-  { icon: <PrintIcon />, name: 'Print' },
-  { icon: <ShareIcon />, name: 'Share' },
+  { icon: <HomeIcon />, name: 'Home' },
+  { icon: <PlusIcon />, name: 'Plus' },
 ];
 
 export default function BasicSpeedDial() {
   return (
-    <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 ,}}>
+
+    <div style={{position:'fixed'}}>
       <SpeedDial
         ariaLabel="SpeedDial basic example"
-        icon={<SpeedDialIcon />}
-        sx={{ position: 'absolute', bottom: -210, left:32,  }}
+        sx={{ position: 'absolute',top:-70, left:10}}
+        FabProps={{
+          size: "medium",
+          style: { backgroundColor: "green",borderRadius:35 }
+        }}
+        icon={<BurgerIcon />}
         direction = "down"
       >
         {actions.map((action) => (
           <SpeedDialAction
+
             key={action.name}
             icon={action.icon}
             tooltipTitle={action.name}
           />
         ))}
       </SpeedDial>
-    </Box>
+     </div>
+
   );
 }

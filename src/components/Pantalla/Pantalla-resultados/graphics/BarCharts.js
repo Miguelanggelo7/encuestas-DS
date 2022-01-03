@@ -60,6 +60,8 @@ function BarCharts  () {
         width = {600}
         options = {{
           maintainAspectRatio: false,
+          responsive: true,
+
           scales: {
             y: {
                beginAtZero: true
