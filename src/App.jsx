@@ -6,6 +6,7 @@ import { UserProvider } from "./contexts/UserContext";
 import { Route } from "./components/Route";
 import Login from './pages/Login';
 import Table from './components/Table';
+import Question_Form from './components/Question_form';
 
 function App() {
   return (
@@ -17,9 +18,7 @@ function App() {
               <Switch>
                 <Route exact path="/" auth>
                   <Drawer />
-                  <Table/>
-                  <Table/>
-                  <Table/>
+                  <Question_Form />
                 </Route>
                 <Route path="/auth">
                   <Login/>
