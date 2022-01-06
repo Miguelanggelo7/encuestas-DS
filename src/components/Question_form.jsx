@@ -1,31 +1,31 @@
 import React,{useState,useEffect} from 'react'
 import "../components/Question_form.css"
 
-import CropOriginalIcon from '@material-ui/icons/CropOriginal';
+import CropOriginalIcon from '@mui/icons-material/CropOriginal';
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import Switch from '@material-ui/core/Switch';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
-import ShortTextIcon from '@material-ui/icons/ShortText';
-import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
-import SubjectIcon from '@material-ui/icons/Subject';
-import BackupIcon from '@material-ui/icons/Backup';
-import LinearScaleIcon from '@material-ui/icons/LinearScale';
-import EventIcon from '@material-ui/icons/Event';
-import ScheduleIcon from '@material-ui/icons/Schedule';
-import AppsIcon from '@material-ui/icons/Apps';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
+import ShortTextIcon from '@mui/icons-material/ShortText';
+import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
+import SubjectIcon from '@mui/icons-material/Subject';
+import BackupIcon from '@mui/icons-material/Backup';
+import LinearScaleIcon from '@mui/icons-material/LinearScale';
+import EventIcon from '@mui/icons-material/Event';
+import ScheduleIcon from '@mui/icons-material/Schedule';
+import AppsIcon from '@mui/icons-material/Apps';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {BsTrash} from "react-icons/bs"
 import Checkbox from '@material-ui/core/Checkbox';
 import { IconButton } from '@material-ui/core';
-import FilterNoneIcon from '@material-ui/icons/FilterNone';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import OndemandVideoIcon from '@material-ui/icons/OndemandVideo';
-import TextFieldsIcon from '@material-ui/icons/TextFields';
+import FilterNoneIcon from '@mui/icons-material/FilterNone';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
+import TextFieldsIcon from '@mui/icons-material/TextFields';
 
 // ------------------------------------------
 
@@ -38,21 +38,21 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Button from '@material-ui/core/Button';
 import {FcRightUp} from "react-icons/fc"
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from '@mui/icons-material/Close';
 import Radio from '@material-ui/core/Radio';
 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import AccordionActions from '@material-ui/core/AccordionActions';
 import Divider from '@material-ui/core/Divider';
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
-import SaveIcon from '@material-ui/icons/Save';
+import SaveIcon from '@mui/icons-material/Save';
 import { KeyboardVoice } from '@mui/icons-material';
 
-function Question_form() {
+const Question_form = () => {
     const [questions,setQuestions] =useState([]); 
     const [documentName,setDocName] =useState("untitled Document"); 
 
@@ -62,13 +62,13 @@ function Question_form() {
     const [questionRequired,setRequired] =useState("true"); 
     
     useEffect(()=>{
-        var newQuestion = {questionText: "Pregunta",answer:false,answerKey:"",questionType:"radio", options : [{optionText: "Opción 1"}], open: true, required:false}
+        const newQuestion = {questionText: "Pregunta",answer:false,answerKey:"",questionType:"radio", options : [{optionText: "Opción 1"}], open: true, required:false}
 
            setQuestions([...questions, newQuestion])
       
     },[])
 
-    function changeType(e){
+    const changeType = (e) => {
       // dispatch({
       //   type:"CHANGE_TYPE",
       //   questionType:e.target.id
@@ -82,9 +82,9 @@ function Question_form() {
       setType(questionType)
      },[changeType])
    
-    function saveQuestions(){
+    const saveQuestions = () => {
         console.log("auto saving questions initiated");
-        var data = {
+        const data = {
           formId: "1256",
           name: "My-new_file",
           description: "first file",
@@ -96,13 +96,13 @@ function Question_form() {
       }
     
     
-      function addMoreQuestionField(){
+      const addMoreQuestionField = () => {
           expandCloseAll(); //I AM GOD
     
           setQuestions(questions=> [...questions, {questionText: "Pregunta", questionType:"radio", options : [{optionText: "Opción 1"}], open: true, required:false}]);
       }
 
-      function addQuestionType(i,type){
+      const addQuestionType = (i,type) => {
         let qs = [...questions];  
         console.log(type)
         qs[i].questionType = type;
@@ -112,16 +112,16 @@ function Question_form() {
       }
     
   
-    function copyQuestion(i){
+    const copyQuestion = (i) => {
       expandCloseAll()
       let qs = [...questions]
-      var newQuestion = qs[i]
+      const newQuestion = qs[i]
 
       setQuestions([...questions, newQuestion])
 
     }
     
-      function deleteQuestion(i){
+      const deleteQuestion = (i) => {
         let qs = [...questions]; 
         if(questions.length > 1){
           qs.splice(i, 1);
@@ -129,24 +129,24 @@ function Question_form() {
         setQuestions(qs)
       }
       
-      function handleOptionValue(text,i, j){
-        var optionsOfQuestion = [...questions];
+      const handleOptionValue = (text,i, j) => {
+        const optionsOfQuestion = [...questions];
         optionsOfQuestion[i].options[j].optionText = text;
         //newMembersEmail[i]= email;
         setQuestions(optionsOfQuestion);
       }
     
-      function handleQuestionValue(text, i){
-        var optionsOfQuestion = [...questions];
+      const handleQuestionValue = (text, i) => {
+        const optionsOfQuestion = [...questions];
         optionsOfQuestion[i].questionText = text;
         setQuestions(optionsOfQuestion);
       }
     
-      function onDragEnd(result) {
+      const onDragEnd = (result) => {
           if (!result.destination) {
             return;
           }
-          var itemgg = [...questions];
+          const itemgg = [...questions];
           const itemF = reorder(
             itemgg,
             result.source.index,
@@ -162,14 +162,14 @@ function Question_form() {
         return result;
       };
 
-      function showAsQuestion(i){
+      const showAsQuestion = (i) => {
         let qs = [...questions];  
          qs[i].open = false;
          setQuestions(qs);
       }
 
-      function addOption(i){
-        var optionsOfQuestion = [...questions];
+      const addOption = (i) => {
+        const optionsOfQuestion = [...questions];
         if(optionsOfQuestion[i].options.length < 5){
           optionsOfQuestion[i].options.push({optionText: "Opción " + (optionsOfQuestion[i].options.length + 1)})
         } else{
@@ -179,8 +179,8 @@ function Question_form() {
         setQuestions(optionsOfQuestion)
       }
     
-      function setOptionAnswer(ans,qno){
-        var Questions = [...questions];
+      const setOptionAnswer = (ans,qno) => {
+        const Questions = [...questions];
   
           Questions[qno].answer = ans;
         
@@ -189,8 +189,8 @@ function Question_form() {
         console.log(qno+" "+ans)
       }
 
-      function setOptionPoints(points,qno){
-        var Questions = [...questions];
+      const setOptionPoints = (points,qno) => {
+        const Questions = [...questions];
   
           Questions[qno].points = points;
         
@@ -198,24 +198,24 @@ function Question_form() {
         setQuestions(Questions)
         console.log(qno+" "+points)
       }
-      function addAnswer(i){
-        var answerOfQuestion = [...questions];
+      const addAnswer = (i) => {
+        const answerOfQuestion = [...questions];
         
           answerOfQuestion[i].answer= !answerOfQuestion[i].answer;
         
         setQuestions(answerOfQuestion)
       }
     
-      function doneAnswer(i){
-        var answerOfQuestion = [...questions];
+      const doneAnswer = (i) => {
+        const answerOfQuestion = [...questions];
         
           answerOfQuestion[i].answer= !answerOfQuestion[i].answer;
         
         setQuestions(answerOfQuestion)
       }
 
-      function requiredQuestion(i){
-        var requiredQuestion = [...questions];
+      const requiredQuestion = (i) => {
+        const requiredQuestion = [...questions];
       
           requiredQuestion[i].required =  ! requiredQuestion[i].required
         
@@ -224,8 +224,8 @@ function Question_form() {
       }
     
 
-      function removeOption(i, j){
-        var optionsOfQuestion = [...questions];
+      const removeOption = (i, j) => {
+        const optionsOfQuestion = [...questions];
         if(optionsOfQuestion[i].options.length > 1){
           optionsOfQuestion[i].options.splice(j, 1);
           setQuestions(optionsOfQuestion)
@@ -233,7 +233,7 @@ function Question_form() {
         }   
       }
     
-      function expandCloseAll(){
+      const expandCloseAll = () => {
         let qs = [...questions]; 
          for (let j = 0; j < qs.length; j++) {  
           qs[j].open = false;
@@ -241,7 +241,7 @@ function Question_form() {
          setQuestions(qs);
       }
     
-      function handleExpand(i){
+      const handleExpand = (i) => {
         let qs = [...questions]; 
         for (let j = 0; j < qs.length; j++) {
           if(i ===j ){
@@ -254,7 +254,7 @@ function Question_form() {
          setQuestions(qs);
       }
     
-      function questionsUI(){
+      const questionsUI = () => {
         return  questions.map((ques, i)=> (
           <Draggable key={i} draggableId={i + 'id'} index={i} >
                       {(provided, snapshot) => (
@@ -530,7 +530,9 @@ function Question_form() {
 
                 
                 <div className="save_form">
-            <Button variant="contained" color="primary" style={{fontSize:"14px"}}>Guardar</Button>
+            <Button variant="contained" color="primary" style={{fontSize:"14px"}}
+              onClick={() => console.log(questions)}
+            >Guardar</Button>
 
             </div>
             </div>
