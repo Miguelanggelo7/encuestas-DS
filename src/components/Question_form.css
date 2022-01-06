@@ -61,7 +61,6 @@
     width: 100%;
     border:none;
     outline:none;
-    border-bottom:1px solid #F4F4F9;
     color:black;
     height:35px;
    
@@ -79,7 +78,6 @@
     width: 100%;
     border:none;
     outline:none;
-    border-bottom:1px solid #F4F4F9;
     color:black;
     height:20px;
 }
