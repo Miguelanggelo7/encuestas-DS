@@ -531,7 +531,7 @@ const Question_form = () => {
               <TextField 
                 label="Descripción" 
                 multiline 
-                maxRows={3}
+                maxRows={4}
                 className="question_form_top_desc" 
                 style={{marginBottom: '60pt'}}
               />
