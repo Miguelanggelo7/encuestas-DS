@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from 'react'
 import "../components/Question_form.css"
-
 import CropOriginalIcon from '@mui/icons-material/CropOriginal';
+import { styled } from '@mui/material/styles';
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-
+import InsertIconPhoto from '@mui/icons-material/InsertPhoto';
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
@@ -21,7 +21,7 @@ import AppsIcon from '@mui/icons-material/Apps';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {BsTrash} from "react-icons/bs"
 import Checkbox from '@material-ui/core/Checkbox';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Avatar } from '@material-ui/core';
 import FilterNoneIcon from '@mui/icons-material/FilterNone';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
@@ -50,7 +50,8 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
 import SaveIcon from '@mui/icons-material/Save';
-import { KeyboardVoice } from '@mui/icons-material';
+import { KeyboardVoice, LockOpenOutlined, LockOutlined } from '@mui/icons-material';
+
 
 const Question_form = () => {
     const [questions,setQuestions] =useState([]); 
@@ -60,7 +61,12 @@ const Question_form = () => {
 
     const [questionType,setType] =useState("radio");
     const [questionRequired,setRequired] =useState("true"); 
+    const [isPublic, setIsPublic] = useState(true);
     
+    const ClickPublicOrPrivate = () => {
+      isPublic ? setIsPublic(false) : setIsPublic(true);
+    }
+
     useEffect(()=>{
         const newQuestion = {questionText: "Pregunta",answer:false,answerKey:"",questionType:"radio", options : [{optionText: "Opción 1"}], open: true, required:false}
 
@@ -508,10 +514,29 @@ const Question_form = () => {
             <br></br>
             <div className="section">
            
-               <div className="question_form_top">
-                  <TextField label="Titulo" className="question_form_top_name" style={{marginBottom: '20pt'}}/>
-                  <TextField label="Descripción" className="question_form_top_desc" style={{marginBottom: '20pt'}}/>
-               </div>
+            <div className="question_form_top">
+              <IconButton style={{marginLeft: "90%"}} onClick={ClickPublicOrPrivate}>
+                {isPublic ? <LockOpenOutlined/> : <LockOutlined/>}
+              </IconButton> 
+              <div className='photo_form'>
+                <Avatar 
+                  style={{margin: 'auto', width:'50pt', height: '50pt'}}
+                  variant='rounded'
+                >
+                  <InsertIconPhoto style={{color: '#fff', width: '25pt', height: '25pt'}}/>
+                </Avatar>
+              </div>
+
+              <TextField label="Titulo" className="question_form_top_name" style={{marginBottom: '20pt'}}/>
+              <TextField 
+                label="Descripción" 
+                multiline 
+                maxRows={3}
+                className="question_form_top_desc" 
+                style={{marginBottom: '60pt'}}
+              />
+
+            </div>
   
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable droppableId="droppable">
@@ -542,4 +567,4 @@ const Question_form = () => {
     )
 }
 
-export default Question_form
+export default Question_form;
