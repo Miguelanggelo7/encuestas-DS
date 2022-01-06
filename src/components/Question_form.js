@@ -62,7 +62,7 @@ function Question_form() {
     const [questionRequired,setRequired] =useState("true"); 
     
     useEffect(()=>{
-        var newQuestion = {questionText: "Question",answer:false,answerKey:"",questionType:"radio", options : [{optionText: "Option 1"}], open: true, required:false}
+        var newQuestion = {questionText: "Pregunta",answer:false,answerKey:"",questionType:"radio", options : [{optionText: "Opción 1"}], open: true, required:false}
 
            setQuestions([...questions, newQuestion])
       
@@ -99,7 +99,7 @@ function Question_form() {
       function addMoreQuestionField(){
           expandCloseAll(); //I AM GOD
     
-          setQuestions(questions=> [...questions, {questionText: "Question", questionType:"radio", options : [{optionText: "Option 1"}], open: true, required:false}]);
+          setQuestions(questions=> [...questions, {questionText: "Pregunta", questionType:"radio", options : [{optionText: "Opción 1"}], open: true, required:false}]);
       }
 
       function addQuestionType(i,type){
@@ -171,9 +171,9 @@ function Question_form() {
       function addOption(i){
         var optionsOfQuestion = [...questions];
         if(optionsOfQuestion[i].options.length < 5){
-          optionsOfQuestion[i].options.push({optionText: "Option " + (optionsOfQuestion[i].options.length + 1)})
+          optionsOfQuestion[i].options.push({optionText: "Opción " + (optionsOfQuestion[i].options.length + 1)})
         } else{
-          console.log("Max  5 options ");  
+          alert("Máximo 5 opciones ");  
         }
         //console.log(optionsOfQuestion);
         setQuestions(optionsOfQuestion)
@@ -316,7 +316,7 @@ function Question_form() {
                          
                         <div >
                             <div className="add_question_top">
-                                <input type="text" className="question" placeholder="Question"    value={ques.questionText} onChange={(e)=>{handleQuestionValue(e.target.value, i)}}></input>
+                                <input type="text" className="question" placeholder="Pregunta"    value={ques.questionText} onChange={(e)=>{handleQuestionValue(e.target.value, i)}}></input>
                                 <CropOriginalIcon style={{color:"#5f6368"}} />
                                 
                                 <Select className="select" style={{color:"#5f6368",fontSize:"13px"}} >
@@ -371,8 +371,8 @@ function Question_form() {
 
                                 } label={
                                 <div>
-                                    <input type="text" className="text_input" style={{fontSize:"13px",width:"60px"}} placeholder="Add other"></input>
-                                    <Button size="small" onClick={()=>{addOption(i)}} style={{textTransform: 'none',color:"#4285f4",fontSize:"13px",fontWeight:"600"}}>Add Option</Button>
+                                    <input type="text" className="text_input" style={{fontSize:"13px",width:"60px"}} placeholder="Otra"></input>
+                                    <Button size="small" onClick={()=>{addOption(i)}} style={{textTransform: 'none',color:"#4285f4",fontSize:"13px",fontWeight:"600"}}>Añadir opción</Button>
                                 </div>
                                 } /> 
                                 </div>
@@ -381,7 +381,7 @@ function Question_form() {
                                <div className="add_footer">
                                <div className="add_question_bottom_left">
                         
-                               <Button size="small"  onClick={()=>{addAnswer(i)}} style={{textTransform: 'none',color:"#4285f4",fontSize:"13px",fontWeight:"600"}}>       <FcRightUp style={{border:"2px solid #4285f4", padding:"2px",marginRight:"8px"}} /> Answer key</Button>
+                               <Button size="small"  onClick={()=>{addAnswer(i)}} style={{textTransform: 'none',color:"#4285f4",fontSize:"13px",fontWeight:"600"}}>       <FcRightUp style={{border:"2px solid #4285f4", padding:"2px",marginRight:"8px"}} /> Seleccionar respuestas </Button>
                                  
                               </div>
 
@@ -394,7 +394,7 @@ function Question_form() {
                                     <IconButton aria-label="delete" onClick={()=>{deleteQuestion(i)}}>
                                         <BsTrash />
                                     </IconButton>
-                                        <span style={{color:"#5f6368",fontSize:"13px"}}>Required </span> <Switch name="checkedA" color="primary" checked={ques.required} onClick={()=>{requiredQuestion(i)}}/>
+                                        <span style={{color:"#5f6368",fontSize:"13px"}}>Requerida </span> <Switch name="checkedA" color="primary" checked={ques.required} onClick={()=>{requiredQuestion(i)}}/>
                                     <IconButton>
                                         <MoreVertIcon />
                                     </IconButton>
@@ -406,11 +406,11 @@ function Question_form() {
 
 <AccordionDetails className="add_question" >
                          <div className="top_header">
-                              Choose Correct Answer
+                              Selecciona la respuesta correcta
                          </div>
 <div >
     <div className="add_question_top">
-        <input type="text" className="question " placeholder="Question"    value={ques.questionText} onChange={(e)=>{handleQuestionValue(e.target.value, i)}} disabled/>
+        <input type="text" className="question " placeholder="Pregunta"    value={ques.questionText} onChange={(e)=>{handleQuestionValue(e.target.value, i)}} disabled/>
         <input type="number" className="points" min="0" step="1" placeholder="0" onChange={(e)=>{setOptionPoints(e.target.value, i)}} />
             
                 
@@ -454,7 +454,7 @@ function Question_form() {
         <div className="add_question_body">
   
            
-            <Button size="small"  style={{textTransform: 'none',color:"#4285f4",fontSize:"13px",fontWeight:"600"}}> <BsFileText style={{fontSize:"20px",marginRight:"8px"}}/>Add Answer Feedback</Button>
+            <Button size="small"  style={{textTransform: 'none',color:"#4285f4",fontSize:"13px",fontWeight:"600"}}> <BsFileText style={{fontSize:"20px",marginRight:"8px"}}/>Añadir respuesta</Button>
         
         
         </div>
@@ -465,7 +465,7 @@ function Question_form() {
         <div className="add_question_bottom">
           
         <Button variant="outlined" color="primary"  style={{textTransform: 'none',color:"#4285f4",fontSize:"12px",marginTop:"12px",fontWeight:"600"}} onClick={()=>{doneAnswer(i)}}>
-                        Done
+                        Hecho
                       </Button>
         
       </div>
@@ -530,7 +530,7 @@ function Question_form() {
 
                 
                 <div className="save_form">
-            <Button variant="contained" color="primary" style={{fontSize:"14px"}}>Save</Button>
+            <Button variant="contained" color="primary" style={{fontSize:"14px"}}>Guardar</Button>
 
             </div>
             </div>

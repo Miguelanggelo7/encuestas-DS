@@ -7,26 +7,45 @@ import { Route } from "./components/Route";
 import Login from './pages/Login';
 import Table from './components/Table';
 import Question_Form from './components/Question_form';
+import {
+  unstable_createMuiStrictModeTheme as createMuiTheme,
+  ThemeProvider,
+} from "@material-ui/core/styles";
+
+const theme = createMuiTheme({
+  palette: {
+    //Azul
+    primary: {
+      main: "#0185B6",
+    },
+    //Verde
+    secondary: {
+      main: "#00D49C",
+    },
+  },
+});
 
 function App() {
   return (
     <div className="App">
-      <UserProvider>
-        <div id="blackground"/>
-          <div id="container-app">
-            <Router>
-              <Switch>
-                <Route exact path="/" auth>
-                  <Drawer />
-                  <Question_Form />
-                </Route>
-                <Route path="/auth">
-                  <Login/>
-                </Route>
-              </Switch>
-            </Router>
-          </div>
-      </UserProvider> 
+      <ThemeProvider theme={theme}>
+        <UserProvider>
+          <div id="blackground"/>
+            <div id="container-app">
+              <Router>
+                <Switch>
+                  <Route exact path="/" auth>
+                    <Drawer />
+                    <Question_Form />
+                  </Route>
+                  <Route path="/auth">
+                    <Login/>
+                  </Route>
+                </Switch>
+              </Router>
+            </div>
+        </UserProvider> 
+      </ThemeProvider>
     </div>
   );
 }
