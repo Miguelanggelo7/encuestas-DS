@@ -5,7 +5,14 @@ import {
   signOut, 
   onAuthStateChanged 
 } from "firebase/auth";
-import { database, auth } from "./config";
+import {
+  doc,
+  collection,
+  getDoc,
+  setDoc
+} from "firebase/firestore";
+
+import { database, auth, firestore, storage} from "./config";
 
 const insertData = async () => {
   try {
@@ -21,9 +28,11 @@ const insertData = async () => {
   }
 };
 
-const register = async (email, password) => {
+const register = async (email, password, data) => {
   try {
     await createUserWithEmailAndPassword(auth, email, password);
+    await setDoc(doc(firestore, "usuarios", auth.currentUser.uid), data);
+    
   } catch (err) {
     throw err;
   }

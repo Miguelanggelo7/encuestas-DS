@@ -5,7 +5,7 @@ import {
   makeStyles, 
 } from "@material-ui/core";
 import ListItemText from '@mui/material/ListItemText';
-
+import { signOutUser } from "../../firebase/functions"
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -67,12 +67,13 @@ export const Navigation = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         className="liDrawer"
+        onClick={ signOutUser }
       >
         <div className="icon-placeholder" >
           <HomeOutlined className={classes.iconItem}/>
         </div>
         <div className="text-placeholder" >
-          Inicio
+          Cerrar Sesion
         </div>
       </motion.li>
       <motion.li

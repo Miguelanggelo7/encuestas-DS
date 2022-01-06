@@ -16,7 +16,6 @@ export const UserProvider = ({ children }) => {
     onAuthStateChanged(auth, user => {
       setUser(user);
       setLoading(false);
-      console.log(`USER ${user}`);
     })
   }, []);
 
