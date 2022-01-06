@@ -45,6 +45,12 @@ const variants2 = {
   }
 };
 
+const componentExit = () => {  
+  document.getElementById("blackground").style.opacity = "0";
+  document.getElementById("blackground").style.zIndex = "0";
+  signOutUser();
+}
+
 export const Navigation = () => {
   const classes = useStyles();
   return (
@@ -67,13 +73,12 @@ export const Navigation = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         className="liDrawer"
-        onClick={ signOutUser }
       >
         <div className="icon-placeholder" >
           <HomeOutlined className={classes.iconItem}/>
         </div>
         <div className="text-placeholder" >
-          Cerrar Sesion
+          Inicio
         </div>
       </motion.li>
       <motion.li
@@ -87,6 +92,21 @@ export const Navigation = () => {
         </div>
         <div className="text-placeholder" >
           Inicio
+        </div>
+      </motion.li>
+      <motion.li
+        variants={variants}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        className="liDrawer"
+        id="cerrarSesionButton"
+        onClick={componentExit}
+      >
+        <div className="icon-placeholder" >
+          <HomeOutlined className={classes.iconItem}/>
+        </div>
+        <div className="text-placeholder" >
+          Cerrar Sesion
         </div>
       </motion.li>
     </motion.ul>
