@@ -323,9 +323,11 @@ const Question_form = () => {
                         <div >
                             <div className="add_question_top">
                                 <input type="text" className="question" placeholder="Pregunta"    value={ques.questionText} onChange={(e)=>{handleQuestionValue(e.target.value, i)}}></input>
-                                <CropOriginalIcon style={{color:"#5f6368"}} />
+                                <IconButton>
+                                  <CropOriginalIcon style={{color:"#5f6368"}} />
+                                </IconButton>
                                 
-                                <Select className="select" style={{color:"#5f6368",fontSize:"13px"}} >
+                                <Select defaultValue={"Radio"} className="select" style={{color:"#5f6368",fontSize:"13px"}} >
                                     {/* <MenuItem value="radio" className="menuitem" >
                                      <ShortTextIcon style={{marginRight:"10px"}} /> <span style={{marginBottom:"10px"}}>Short Paragraph</span></MenuItem>
                                      */}
@@ -334,8 +336,8 @@ const Question_form = () => {
                                     {/* <MenuItem id="checkbox"><RadioButtonCheckedIcon checked style={{marginRight:"10px", color:"#70757a"}}/> Multiple Choice</MenuItem> */}
                                     <MenuItem id="checkbox"  value="Checkbox" onClick= {()=>{addQuestionType(i,"checkbox")}}><CheckBoxIcon style={{marginRight:"10px" ,color:"#70757a"}} checked /> Selección múltiple</MenuItem>
                                     <MenuItem id="radio" value="Radio" onClick= {()=>{addQuestionType(i,"radio")}}> <RadioButtonCheckedIcon style={{marginRight:"10px",color:"#70757a"}} checked/> Selección simple</MenuItem>
-                                    <MenuItem value="file" onClick= {()=>{addQuestionType(i,"file")}}> <BackupIcon style={{marginRight:"10px",color:"#70757a"}} /> Carga de archivo </MenuItem>
-                                    <MenuItem value="voice" onClick= {()=>{addQuestionType(i,"voice")}}> <KeyboardVoice style={{marginRight:"10px",color:"#70757a"}} /> Audio </MenuItem>
+                                    <MenuItem value="File" onClick= {()=>{addQuestionType(i,"file")}}> <BackupIcon style={{marginRight:"10px",color:"#70757a"}} /> Carga de archivo </MenuItem>
+                                    <MenuItem value="Voice" onClick= {()=>{addQuestionType(i,"voice")}}> <KeyboardVoice style={{marginRight:"10px",color:"#70757a"}} /> Audio </MenuItem>
 
                                     {/* <MenuItem value="aate"  onClick= {(e)=>{setType(e.target.id)}}> <EventIcon style={{marginRight:"10px"}} /> Date</MenuItem>
                                     <MenuItem value="date"  onClick= {(e)=>{setType(e.target.id)}}> <ScheduleIcon style={{marginRight:"10px"}} /> Time</MenuItem>
@@ -355,10 +357,8 @@ const Question_form = () => {
 
                                     }
                                     <div >
-                                        <input type="text" className="text_input" style={{width: '200pt'}} placeholder="option"  value={ques.options[j].optionText}onChange={(e)=>{handleOptionValue(e.target.value, i, j)}}></input>
+                                        <input type="text" className="text_input" style={{width: '197.5pt'}} placeholder="Opción"  value={ques.options[j].optionText}onChange={(e)=>{handleOptionValue(e.target.value, i, j)}}></input>
                                     </div>
-
-                                    <CropOriginalIcon style={{color:"#5f6368"}}/>
 
                                     <IconButton aria-label="delete" onClick={()=>{removeOption(i, j)}}>
                                             <CloseIcon />
@@ -484,7 +484,6 @@ const Question_form = () => {
                     )}
                     {!ques.answer ? (<div className="question_edit">
                                 <AddCircleOutlineIcon onClick={addMoreQuestionField} className="edit"/>
-                                <OndemandVideoIcon className="edit"/>
                                 <CropOriginalIcon className="edit"/>
                                 <TextFieldsIcon className="edit"/>
                     </div>): "" }
@@ -516,7 +515,7 @@ const Question_form = () => {
            
             <div className="question_form_top">
               <IconButton style={{marginLeft: "90%"}} onClick={ClickPublicOrPrivate}>
-                {isPublic ? <LockOpenOutlined/> : <LockOutlined/>}
+                {isPublic ? <LockOpenOutlined style={{color: '#00d49c'}}/> : <LockOutlined style={{color: '#FF005C'}}/>}
               </IconButton> 
               <div className='photo_form'>
                 <Avatar 
@@ -533,7 +532,7 @@ const Question_form = () => {
                 multiline 
                 maxRows={4}
                 className="question_form_top_desc" 
-                style={{marginBottom: '60pt'}}
+                style={{marginBottom: '50pt'}}
               />
 
             </div>
