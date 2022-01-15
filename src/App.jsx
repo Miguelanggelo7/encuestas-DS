@@ -10,19 +10,35 @@ import BasicSpeedDial from './components/Pantalla/SpeedDial';
 import IconButton from './components/Pantalla/buttonHome';
 import Resultados from './components/Pantalla/Pantalla-resultados/Resultados';
 import './components/Pantalla/Pantalla-resultados/Resultados.css';
+import MovieGrid from './components/Pantalla/Pantalla-youtube/MovieGrid';
+import styles from "./components/Pantalla/Pantalla-youtube/App.module.css";
+
 
 function App() {
   return (
-    <div style={{alignContent:'flex-start'}}>
-        <div>
-          <Resultados/>
-        </div>
-      <BasicSpeedDial/>
+    <div>
+      <header>
+        <h1 className = {styles.title}>
+          Movies
+        </h1>
+      </header>
+      <main>
+        <MovieGrid/>
+      </main>
     </div>
   );
 }
 
 export default App;
+
+
+// <div style={{alignContent:'flex-start'}}>
+//     <div>
+//       <Resultados/>
+//     </div>
+//   <BasicSpeedDial/>
+// </div>
+
 
 
 // <div>
