@@ -1,11 +1,11 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { ContentPasteGoOutlined, HomeOutlined } from "@mui/icons-material";
+import { Home, Ballot, Search, FactCheck, Logout, PinDropSharp, FamilyRestroomOutlined } from "@mui/icons-material";
 import { 
   makeStyles, 
 } from "@material-ui/core";
-import ListItemText from '@mui/material/ListItemText';
-import { signOutUser } from "../../firebase/functions"
+import { signOutUser } from "../../firebase/functions";
+import { Link } from "react-router-dom";
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -14,7 +14,17 @@ const useStyles = makeStyles({
     margin: 'auto',
      marginLeft: '6pt', 
      marginTop: '6pt',
-  }
+  },
+  iconItemExit: {
+    color: '#FF005C', 
+    margin: 'auto',
+     marginLeft: '6pt', 
+     marginTop: '6pt',
+  },
+  linkStyle: {
+    textDecoration: 'none',
+    color: '#000',
+  },
 });
 
 const variants = {
@@ -51,10 +61,64 @@ const componentExit = () => {
   signOutUser();
 }
 
-export const Navigation = () => {
+const closeDrawer = () => {  
+  document.getElementById("blackground").style.opacity = "0";
+  document.getElementById("blackground").style.zIndex = "0";
+}
+
+export const Navigation = ({ toggle }) => {
   const classes = useStyles();
   return (
     <motion.ul variants={variants2} className="ulDrawer">
+      <Link className={classes.linkStyle} to="/">
+        <motion.li
+          variants={variants}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="liDrawer"
+          onClick={closeDrawer}
+          onClick={toggle}
+        >
+          <div className="icon-placeholder" >
+            <Home className={classes.iconItem}/>
+          </div>
+          <div className="text-placeholder" >
+            Inicio
+          </div>
+        </motion.li>
+      </Link>
+      <motion.li
+        variants={variants}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        className="liDrawer"
+        onClick={closeDrawer}
+          onClick={toggle}
+      >
+        <div className="icon-placeholder" >
+          <Ballot className={classes.iconItem}/>
+        </div>
+        <div className="text-placeholder" >
+          Mis encuestas
+        </div>
+      </motion.li>
+      <Link className={classes.linkStyle} to="/BuscarEncuestas">
+        <motion.li
+          variants={variants}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="liDrawer"
+          onClick={closeDrawer}
+          onClick={toggle}
+        >
+          <div className="icon-placeholder" >
+            <Search className={classes.iconItem}/>
+          </div>
+          <div className="text-placeholder" >
+            Buscar Encuestas
+          </div>
+        </motion.li>
+      </Link>
       <motion.li
         variants={variants}
         whileHover={{ scale: 1.1 }}
@@ -62,10 +126,10 @@ export const Navigation = () => {
         className="liDrawer"
       >
         <div className="icon-placeholder" >
-          <HomeOutlined className={classes.iconItem}/>
+          <FactCheck className={classes.iconItem}/>
         </div>
         <div className="text-placeholder" >
-          Inicio
+          Encuestas realizadas
         </div>
       </motion.li>
       <motion.li
@@ -73,37 +137,12 @@ export const Navigation = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         className="liDrawer"
-      >
-        <div className="icon-placeholder" >
-          <HomeOutlined className={classes.iconItem}/>
-        </div>
-        <div className="text-placeholder" >
-          Inicio
-        </div>
-      </motion.li>
-      <motion.li
-        variants={variants}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="liDrawer"
-      >
-        <div className="icon-placeholder" >
-          <HomeOutlined className={classes.iconItem}/>
-        </div>
-        <div className="text-placeholder" >
-          Inicio
-        </div>
-      </motion.li>
-      <motion.li
-        variants={variants}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="liDrawer"
-        id="cerrarSesionButton"
         onClick={componentExit}
+        onClick={toggle}
+        id="cerrarSesionButton"
       >
         <div className="icon-placeholder" >
-          <HomeOutlined className={classes.iconItem}/>
+          <Logout className={classes.iconItemExit}/>
         </div>
         <div className="text-placeholder" >
           Cerrar Sesion

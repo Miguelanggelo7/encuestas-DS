@@ -11,6 +11,7 @@ import {
   unstable_createMuiStrictModeTheme as createMuiTheme,
   ThemeProvider,
 } from "@material-ui/core/styles";
+import Home from "./pages/Home";
 
 const theme = createMuiTheme({
   palette: {
@@ -36,7 +37,15 @@ function App() {
                 <Switch>
                   <Route exact path="/" auth>
                     <Drawer />
+                    <Home />
+                  </Route>
+                  <Route exact path="/CrearEncuesta" auth>
+                    <Drawer />
                     <Question_Form />
+                  </Route>
+                  <Route exact path="/BuscarEncuestas" auth>
+                    <Drawer />
+                    <h1>Buscar Encuestas</h1>
                   </Route>
                   <Route path="/auth">
                     <Login/>

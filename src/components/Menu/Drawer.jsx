@@ -63,7 +63,7 @@ const Drawer = () => {
       id="drawer"
     >
       <motion.div className="background" variants={sidebar} />
-      <Navigation />
+      <Navigation toggle={() => toggleOpen()}/>
       <MenuToggle toggle={() => toggleOpen()} />
     </motion.nav>
   );

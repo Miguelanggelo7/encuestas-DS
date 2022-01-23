@@ -11,9 +11,11 @@
     z-index: 0;
   }
 
-#cerrarSesionButton{
-  margin-top: 100%;
-}
+  #cerrarSesionButton{
+    position: absolute;
+    width: 250px;
+    bottom: 0;
+  }
 
   #blackground {
     width:100%; 
@@ -64,16 +66,22 @@
     top: 100px;
     width: 300px;
     margin: auto;
+    height: 80%;
   }
   
   .liDrawer {
     list-style: none;
     display: flex;
     align-items: center;
-    cursor: pointer;
-    background-color: #fafafa;
+    cursor: pointer;   
+    background-color: #f5f5f5;
     margin-bottom: 10pt;
     border-radius: 3pt;
+    transition: all .1s;
+  }
+
+  .liDrawer:hover{
+    filter: drop-shadow(2px 2px 2px rgba(50, 50, 0, 0.5));
   }
   
   .icon-placeholder {

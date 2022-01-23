@@ -103,7 +103,7 @@ const Question_form = () => {
     
     
       const addMoreQuestionField = () => {
-          expandCloseAll(); //I AM GOD
+          expandCloseAll(); 
     
           setQuestions(questions=> [...questions, {questionText: "Pregunta", questionType:"radio", options : [{optionText: "Opción 1"}], open: true, required:false}]);
       }
@@ -337,7 +337,6 @@ const Question_form = () => {
                                     <MenuItem id="checkbox"  value="Checkbox" onClick= {()=>{addQuestionType(i,"checkbox")}}><CheckBoxIcon style={{marginRight:"10px" ,color:"#70757a"}} checked /> Selección múltiple</MenuItem>
                                     <MenuItem id="radio" value="Radio" onClick= {()=>{addQuestionType(i,"radio")}}> <RadioButtonCheckedIcon style={{marginRight:"10px",color:"#70757a"}} checked/> Selección simple</MenuItem>
                                     <MenuItem value="File" onClick= {()=>{addQuestionType(i,"file")}}> <BackupIcon style={{marginRight:"10px",color:"#70757a"}} /> Carga de archivo </MenuItem>
-                                    <MenuItem value="Voice" onClick= {()=>{addQuestionType(i,"voice")}}> <KeyboardVoice style={{marginRight:"10px",color:"#70757a"}} /> Audio </MenuItem>
 
                                     {/* <MenuItem value="aate"  onClick= {(e)=>{setType(e.target.id)}}> <EventIcon style={{marginRight:"10px"}} /> Date</MenuItem>
                                     <MenuItem value="date"  onClick= {(e)=>{setType(e.target.id)}}> <ScheduleIcon style={{marginRight:"10px"}} /> Time</MenuItem>
