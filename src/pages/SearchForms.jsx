@@ -12,7 +12,7 @@ import {
   Search,
   Directions
 } from "@mui/icons-material"
-import MovieGrid from "../components/Pantalla/Pantalla-youtube/MovieGrid"
+import GridForms from "../components/CardsForms/GridForms";
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -43,7 +43,7 @@ const SearchForms = () => {
           </IconButton>
         </Paper>
       </div>
-      <MovieGrid/>
+      <GridForms/>
     </div>
   );
 };

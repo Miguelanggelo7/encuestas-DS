@@ -138,7 +138,6 @@ export const Navigation = ({ toggle }) => {
         whileTap={{ scale: 0.95 }}
         className="liDrawer"
         onClick={componentExit}
-        onClick={toggle}
         id="cerrarSesionButton"
       >
         <div className="icon-placeholder" >

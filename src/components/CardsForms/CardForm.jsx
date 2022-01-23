@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import styles from "./MovieCard.module.css";
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -12,9 +11,30 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteFill from '@mui/icons-material/Favorite';
 import { ButtonBase } from "@mui/material";
+import { 
+  makeStyles, 
+} from "@material-ui/core";
 
-export function MovieCard({ movie }) {
+// ESTILOS
+const useStyles = makeStyles({
+  cardForm: {
+    listStyle: 'none',
+    fontSize: '1.5rem',
+    textAlign: 'center',
+    width: '250px',
+    borderRadius: '5pt',
+    backgroundColor: '#fff',
+    filter: 'drop-shadow(2px 2px 2px rgba(50, 50, 0, 0.5))',
+  },
+  movieImage: {
+    backgroundColor: 'azure',
+    
+  },
+});
 
+export function CardForm({ movie }) {
+
+  const classes = useStyles();
   const [like, setLike] = useState(false);
   const imageUrl = "https://image.tmdb.org/t/p/w300" + movie.poster_path;
 
@@ -23,22 +43,22 @@ export function MovieCard({ movie }) {
   }
 
   return (
-    <li className={styles.movieCard}>
+    <li className={classes.cardForm}>
       <Card sx={{ maxWidth: 345 }}> 
           <CardHeader
             avatar={
               <Avatar sx={{ bgcolor: "#0185B6"}} aria-label={movie.title}>
-                R
+                {movie.persona.charAt(0).toUpperCase()}
               </Avatar>
             }
-            title={movie.id}
+            title={movie.persona}
             subheader={movie.release_date}
           />
           <CardMedia
-            className={styles.movieImage}
+            className={classes.movieImage}
             component="img"
             height="200"
-            image={imageUrl}
+            image={movie.backdrop_path}
             alt={movie.title , movie.release_date}
           />
           <CardContent>
