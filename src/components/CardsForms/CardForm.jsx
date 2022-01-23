@@ -25,6 +25,7 @@ const useStyles = makeStyles({
     width: '250px',
     borderRadius: '5pt',
     backgroundColor: '#fff',
+    margin: 'auto',
     filter: 'drop-shadow(1px 1px 1px rgba(50, 50, 0, 0.5))',
     "&:hover": {
       filter: 'drop-shadow(2px 2px 2px rgba(50, 50, 0, 0.5))',
@@ -41,12 +42,13 @@ export function CardForm({ movie }) {
   const [like, setLike] = useState(false);
   const imageUrl = "https://image.tmdb.org/t/p/w300" + movie.poster_path;
 
-  const likeClick = () => {
+  const likeClick = e => {
+    e.stopPropagation();
     setLike(!like);
   }
 
   return (
-    <motion.li whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }} className={classes.cardForm}>
+    <motion.li whileHover={{ scale: 1.03 }} transition={{ duration: 0.2 }} className={classes.cardForm}>
       <Card sx={{ maxWidth: 345 }}> 
           <ButtonBase style={{display: 'block'}}>
             <CardHeader

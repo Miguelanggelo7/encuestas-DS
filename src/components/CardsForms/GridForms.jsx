@@ -13,7 +13,9 @@ const useStyles = makeStyles({
     gap: '40px',
     padding: '40px',
     justifyContent: 'center',
-    
+    "@media (max-width: 560px)": {
+      gridTemplateColumns: '100%',
+    }
   },
 });
 
