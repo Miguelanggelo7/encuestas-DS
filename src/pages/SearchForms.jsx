@@ -29,7 +29,7 @@ const SearchForms = () => {
 
   return (
     <div className={classes.containerSearch}>
-      <div style={{width: '220pt', margin: 'auto', marginTop: '20pt'}} >
+      <div style={{width: '220pt', margin: 'auto', marginTop: '60pt'}} >
         <Paper
           sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
           elevation={3}
