@@ -60,3 +60,32 @@ function App() {
 }
 
 export default App;
+
+
+// <div style={{alignContent:'flex-start'}}>
+//     <div>
+//       <Resultados/>
+//     </div>
+//   <BasicSpeedDial/>
+// </div>
+
+
+
+// <div>
+//   <EncuestaRealizada/>
+// </div>
+// <div>
+//   <EncuestaRealizada/>
+// </div>
+// <div>
+//   <EncuestaRealizada/>
+// </div>
+
+
+
+// <Drawer/>
+// <div id="blackground"/>
+// <div id="container-app">
+//   <Table/>
+//   <Table/>
+// </div>
