@@ -14,6 +14,7 @@ import { ButtonBase } from "@mui/material";
 import { 
   makeStyles, 
 } from "@material-ui/core";
+import { motion } from "framer-motion";
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -24,11 +25,13 @@ const useStyles = makeStyles({
     width: '250px',
     borderRadius: '5pt',
     backgroundColor: '#fff',
-    filter: 'drop-shadow(2px 2px 2px rgba(50, 50, 0, 0.5))',
+    filter: 'drop-shadow(1px 1px 1px rgba(50, 50, 0, 0.5))',
+    "&:hover": {
+      filter: 'drop-shadow(2px 2px 2px rgba(50, 50, 0, 0.5))',
+    },
   },
   movieImage: {
     backgroundColor: 'azure',
-    
   },
 });
 
@@ -43,35 +46,37 @@ export function CardForm({ movie }) {
   }
 
   return (
-    <li className={classes.cardForm}>
+    <motion.li whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }} className={classes.cardForm}>
       <Card sx={{ maxWidth: 345 }}> 
-          <CardHeader
-            avatar={
-              <Avatar sx={{ bgcolor: "#0185B6"}} aria-label={movie.title}>
-                {movie.persona.charAt(0).toUpperCase()}
-              </Avatar>
-            }
-            title={movie.persona}
-            subheader={movie.release_date}
-          />
-          <CardMedia
-            className={classes.movieImage}
-            component="img"
-            height="200"
-            image={movie.backdrop_path}
-            alt={movie.title , movie.release_date}
-          />
-          <CardContent>
-            <Typography  variant="body2" style={{height: '20pt'}}>
-              {movie.title}
-            </Typography>
-          </CardContent>
-          <CardActions disableSpacing>
-            <IconButton id="likesito" aria-label="add to favorites" onClick={likeClick}>
-              {!like ? <FavoriteIcon /> : <FavoriteFill style={{color: '#FF005C'}}/>}
-            </IconButton>
-          </CardActions>
+          <ButtonBase style={{display: 'block'}}>
+            <CardHeader
+              avatar={
+                <Avatar sx={{ bgcolor: "#0185B6"}} aria-label={movie.title}>
+                  {movie.persona.charAt(0).toUpperCase()}
+                </Avatar>
+              }
+              title={movie.persona}
+              subheader={movie.release_date}
+            />
+            <CardMedia
+              className={classes.movieImage}
+              component="img"
+              height="200"
+              image={movie.backdrop_path}
+              alt={movie.title , movie.release_date}
+            />
+            <CardContent>
+              <Typography  variant="body2" style={{height: '20pt'}}>
+                {movie.title}
+              </Typography>
+            </CardContent>
+            <CardActions disableSpacing>
+              <IconButton id="likesito" aria-label="add to favorites" onMouseDown={e => e.stopPropagation()} onClick={likeClick}>
+                {!like ? <FavoriteIcon /> : <FavoriteFill style={{color: '#FF005C'}}/>}
+              </IconButton>
+            </CardActions>
+          </ButtonBase>
       </Card>
-    </li>
+    </motion.li>
   );
 }
