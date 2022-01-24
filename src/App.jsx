@@ -15,13 +15,6 @@ import Home from "./pages/Home";
 import SearchForms from "./pages/SearchForms";
 
 const theme = createMuiTheme({
-  overrides: {
-    MuiIcon: {
-      root: {
-        overflow: 'visible'
-      }
-    }
-  },
   palette: {
     //Azul
     primary: {
