@@ -309,7 +309,7 @@ const Question_form = () => {
                       label="Nota"
                       type="number"
                       disabled={!grade}
-                      style={{position: 'absolute', right: '0', top: '0', marginRight: '10pt', marginTop: '5pt'}}
+                      style={{position: 'absolute', right: '0', top: '0', marginRight: '30pt', marginTop: '5pt'}}
                       InputProps={{ inputProps: { min: 0, max: 100 } }}
                     />
                     
