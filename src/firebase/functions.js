@@ -11,20 +11,17 @@ import {
   getDoc,
   setDoc
 } from "firebase/firestore";
-
+import { v4 as uuid } from "uuid";
 import { database, auth, firestore, storage} from "./config";
 
-const insertData = async () => {
+const saveSurvey = async (data) => {
   try {
-    await set(ref(database, "preguntas/usuario1"), {
-      name: "jose",
-      lastname: "saad",
-      contesto: "yes"
-    });
-    
-    alert("Funciono")
+    const surveyId = uuid();
+    console.log(data)
+    await set(ref(database, `usuarios/${auth.currentUser.uid}/encuestas/${surveyId}`), data);
+
   } catch (err) {
-    console.log(err)
+    throw err;
   }
 };
 
@@ -58,4 +55,4 @@ const getCurrentUser = async () => {
   return auth.currentUser;
 }
 
-export { insertData, register, login, signOutUser, getCurrentUser, onAuthStateChanged };
+export { saveSurvey, register, login, signOutUser, getCurrentUser, onAuthStateChanged };
