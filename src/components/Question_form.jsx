@@ -52,9 +52,26 @@ import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import SaveIcon from '@mui/icons-material/Save';
 import { KeyboardVoice, LockOpenOutlined, LockOutlined } from '@mui/icons-material';
 
+// ESTILOS
+const useStyles = makeStyles({
+  topSeparator: {
+    "@media (min-width: 600pt)": {
+      marginLeft: '58%',
+    },
+    "@media (min-width: 800pt)": {
+      marginLeft: '64%',
+    },
+    "@media (min-width: 1000pt)": {
+      marginLeft: '72%',
+    },
+    marginLeft: '180pt',
+  }
+});
 
 const Question_form = () => {
+    const classes = useStyles();
     const [questions,setQuestions] =useState([]); 
+    const [grade,setGrade] =useState(false); 
     const [documentName,setDocName] =useState("untitled Document"); 
 
     const [documentDescription,setDocDesc] =useState("Add Description"); 
@@ -106,6 +123,10 @@ const Question_form = () => {
           expandCloseAll(); 
     
           setQuestions(questions=> [...questions, {questionText: "Pregunta", questionType:"radio", options : [{optionText: "Opción 1"}], open: true, required:false}]);
+      }
+
+      const editableGrade = () => {
+        setGrade(!grade);
       }
 
       const addQuestionType = (i,type) => {
@@ -283,12 +304,23 @@ const Question_form = () => {
                     id="panel1a-header"
                     elevation={1} style={{width:'100%'}}
                   >
+                    <TextField
+                      id="outlined-number"
+                      label="Nota"
+                      type="number"
+                      disabled={!grade}
+                      style={{position: 'absolute', right: '0', top: '0', marginRight: '10pt', marginTop: '5pt'}}
+                      InputProps={{ inputProps: { min: 0, max: 100 } }}
+                    />
+                    
                     { !questions[i].open ? (
+
 
                         
                   <div className="saved_questions">
                     
-                    
+                   
+
                     <Typography  style={{fontSize:"15px",fontWeight:"400",letterSpacing: '.1px',lineHeight:'24px',paddingBottom:"8px"}} >{i+1}.  {ques.questionText}</Typography>
     
                     
@@ -317,9 +349,11 @@ const Question_form = () => {
                   </div>            
                   ): ""}   
                   </AccordionSummary>
+                  
                       <div className="question_boxes">
+                        
                       {!ques.answer ? (<AccordionDetails className="add_question" >
-                         
+                      
                         <div >
                             <div className="add_question_top">
                                 <input type="text" className="question" placeholder="Pregunta"    value={ques.questionText} onChange={(e)=>{handleQuestionValue(e.target.value, i)}}></input>
@@ -484,7 +518,6 @@ const Question_form = () => {
                     {!ques.answer ? (<div className="question_edit">
                                 <AddCircleOutlineIcon onClick={addMoreQuestionField} className="edit"/>
                                 <CropOriginalIcon className="edit"/>
-                                <TextFieldsIcon className="edit"/>
                     </div>): "" }
                     </div>
                             
@@ -513,9 +546,12 @@ const Question_form = () => {
             <div className="section">
            
             <div className="question_form_top">
-              <IconButton style={{marginLeft: "90%"}} onClick={ClickPublicOrPrivate}>
-                {isPublic ? <LockOpenOutlined style={{color: '#00d49c'}}/> : <LockOutlined style={{color: '#FF005C'}}/>}
-              </IconButton> 
+              <div style={{displat: 'inline-flex'}}>
+              <span style={{color:"#5f6368",fontSize:"13px"}}>Evaluada</span> <Switch name="checkedGrade" onClick={editableGrade} color="primary" />
+                <IconButton className={classes.topSeparator} onClick={ClickPublicOrPrivate}>
+                  {isPublic ? <LockOpenOutlined style={{color: '#00d49c'}}/> : <LockOutlined style={{color: '#FF005C'}}/>}
+                </IconButton> 
+              </div>
               <div className='photo_form'>
                 <Avatar 
                   style={{margin: 'auto', width:'50pt', height: '50pt'}}

@@ -249,6 +249,10 @@ background:transparent;
     margin-left: 2.5pt;
 }
 
+.edit:hover{
+    cursor: pointer;
+}
+
 .saved_questions
 {
     background-color: white;
