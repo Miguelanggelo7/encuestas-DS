@@ -26,6 +26,7 @@ import FilterNoneIcon from "@mui/icons-material/FilterNone";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import TextFieldsIcon from "@mui/icons-material/TextFields";
+import ImageIcon from '@mui/icons-material/Image';
 
 // ------------------------------------------
 
@@ -779,9 +780,10 @@ const Question_form = () => {
         <br></br>
         <div className="section">
           <div className="question_form_top">
+            <span style={{color:"#5f6368",fontSize:"13px"}}>Evaluada</span> <Switch name="checkedGrade" onClick={editableGrade} color="primary" />
             <IconButton
-              style={{ marginLeft: "90%" }}
               onClick={ClickPublicOrPrivate}
+              className={classes.topSeparator}
             >
               {isPublic ? (
                 <LockOpenOutlined style={{ color: "#00d49c" }} />
@@ -791,12 +793,21 @@ const Question_form = () => {
             </IconButton>
             
             <div className="photo_form"> 
-              <label htmlFor="select-image">
-                <Avatar
-                  style={{ margin: "auto", width: "50pt", height: "50pt" }}
-                  variant="rounded"
-                  src={image}
-                />
+              <label htmlFor="select-image" className="photo_form">
+                {!image ? (
+                  <Avatar
+                    style={{ margin: "auto", width: "50pt", height: "50pt" }}
+                    variant="rounded"
+                  >
+                    <ImageIcon style={{width: "30pt", height: "30pt"}}/>
+                  </Avatar>
+                ) : (
+                  <Avatar
+                    style={{ margin: "auto", width: "50pt", height: "50pt" }}
+                    variant="rounded"
+                    src={image}
+                  />
+                )}
               </label>
               <input
                 accept="image/*"
@@ -804,6 +815,7 @@ const Question_form = () => {
                 style={{ display: "none" }}
                 onChange={selectImage}
                 id="select-image"
+                className="photo_form"
               />
             </div>
 
