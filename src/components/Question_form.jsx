@@ -58,9 +58,27 @@ import {
 import { v4 as uuid } from "uuid";
 import { saveSurvey, getCurrentUser, getSurveysByUser, saveSurveyImage } from "../firebase/functions";
 
+// ESTILOS
+const useStyles = makeStyles({
+  topSeparator: {
+    "@media (min-width: 600pt)": {
+      marginLeft: '58%',
+    },
+    "@media (min-width: 800pt)": {
+      marginLeft: '64%',
+    },
+    "@media (min-width: 1000pt)": {
+      marginLeft: '72%',
+    },
+    marginLeft: '180pt',
+  }
+});
+
 const Question_form = () => {
-  const [questions, setQuestions] = useState([]);
-  const [documentName, setDocName] = useState("untitled Document");
+    const classes = useStyles();
+    const [questions,setQuestions] =useState([]); 
+    const [grade,setGrade] =useState(false); 
+    const [documentName,setDocName] =useState("untitled Document"); 
 
   const [documentDescription, setDocDesc] = useState("Add Description");
 
@@ -185,6 +203,9 @@ const Question_form = () => {
     setQuestions(optionsOfQuestion);
   };
 
+      const editableGrade = () => {
+        setGrade(!grade);
+      }
   const onDragEnd = (result) => {
     if (!result.destination) {
       return;
@@ -332,84 +353,65 @@ const Question_form = () => {
                     elevation={1}
                     style={{ width: "100%" }}
                   >
-                    {!questions[i].open ? (
-                      <div className="saved_questions">
-                        <Typography
-                          style={{
-                            fontSize: "15px",
-                            fontWeight: "400",
-                            letterSpacing: ".1px",
-                            lineHeight: "24px",
-                            paddingBottom: "8px",
-                          }}
-                        >
-                          {i + 1}. {ques.questionText}
-                        </Typography>
+                    <TextField
+                      id="outlined-number"
+                      label="Nota"
+                      type="number"
+                      disabled={!grade}
+                      style={{position: 'absolute', right: '0', top: '0', marginRight: '30pt', marginTop: '5pt'}}
+                      InputProps={{ inputProps: { min: 0, max: 100 } }}
+                    />
+                    
+                    { !questions[i].open ? (
 
-                        {ques.options.map((op, j) => (
-                          <div key={j}>
-                            <div style={{ display: "flex" }}>
-                              <FormControlLabel
-                                style={{
-                                  marginLeft: "5px",
-                                  marginBottom: "5px",
-                                }}
-                                disabled
-                                control={
-                                  <input
-                                    type={ques.questionType}
-                                    color="primary"
-                                    style={{ marginRight: "3px" }}
-                                    required={ques.type}
-                                  />
-                                }
-                                label={
-                                  <Typography
-                                    style={{
-                                      fontFamily: " Roboto,Arial,sans-serif",
-                                      fontSize: " 13px",
-                                      fontWeight: "400",
-                                      letterSpacing: ".2px",
-                                      lineHeight: "20px",
-                                      color: "#202124",
-                                    }}
-                                  >
-                                    {ques.options[j].optionText}
-                                  </Typography>
-                                }
-                              />
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      ""
-                    )}
+
+                        
+                  <div className="saved_questions">
+                    
+                   
+
+                    <Typography  style={{fontSize:"15px",fontWeight:"400",letterSpacing: '.1px',lineHeight:'24px',paddingBottom:"8px"}} >{i+1}.  {ques.questionText}</Typography>
+    
+                    
+                    {ques.options.map((op, j)=>(
+                     
+                     <div key={j} >
+                       <div style={{display: 'flex',}}>
+                        <FormControlLabel style={{marginLeft:"5px",marginBottom:"5px"}} disabled control={<input type={ques.questionType} color="primary" style={{marginRight: '3px', }} required={ques.type}/>} label={
+                            <Typography style={{fontFamily:' Roboto,Arial,sans-serif',
+                                fontSize:' 13px',
+                                fontWeight: '400',
+                                letterSpacing: '.2px',
+                                lineHeight: '20px',
+                                color: '#202124'}}>
+                              {ques.options[j].optionText}
+                            </Typography>
+                          } />
+                       </div>
+    
+                     
+                     </div>
+
+                         
+
+                    ))}  
+                  </div>            
+                  ): ""}   
                   </AccordionSummary>
-                  <div className="question_boxes">
-                    {!ques.answer ? (
-                      <AccordionDetails className="add_question">
-                        <div>
-                          <div className="add_question_top">
-                            <input
-                              type="text"
-                              className="question"
-                              placeholder="Pregunta"
-                              value={ques.questionText}
-                              onChange={(e) => {
-                                handleQuestionValue(e.target.value, i);
-                              }}
-                            ></input>
-                            <IconButton>
-                              <CropOriginalIcon style={{ color: "#5f6368" }} />
-                            </IconButton>
-
-                            <Select
-                              defaultValue={"Radio"}
-                              className="select"
-                              style={{ color: "#5f6368", fontSize: "13px" }}
-                            >
-                              {/* <MenuItem value="radio" className="menuitem" >
+                  
+                      <div className="question_boxes">
+                        
+                      {!ques.answer ? (<AccordionDetails className="add_question" >
+                      
+                        <div >
+                            <div className="add_question_top">
+                                <input type="text" className="question" placeholder="Pregunta"    value={ques.questionText} onChange={(e)=>{handleQuestionValue(e.target.value, i)}}></input>
+                                <IconButton>
+                                  <CropOriginalIcon style={{color:"#5f6368"}} />
+                                </IconButton>
+                                
+                                <Select defaultValue={"Radio"} className="select" style={{color:"#5f6368",fontSize:"13px"}} >
+                                    {/* <MenuItem value="radio" className="menuitem" >
                                      <ShortTextIcon style={{marginRight:"10px"}} /> <span style={{marginBottom:"10px"}}>Short Paragraph</span></MenuItem>
                                      */}
                               <MenuItem
@@ -755,19 +757,12 @@ const Question_form = () => {
                         </div>
                       </AccordionDetails>
                     )}
-                    {!ques.answer ? (
-                      <div className="question_edit">
-                        <AddCircleOutlineIcon
-                          onClick={addMoreQuestionField}
-                          className="edit"
-                        />
-                        <CropOriginalIcon className="edit" />
-                        <TextFieldsIcon className="edit" />
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </div>
+                    {!ques.answer ? (<div className="question_edit">
+                                <AddCircleOutlineIcon onClick={addMoreQuestionField} className="edit"/>
+                                <CropOriginalIcon className="edit"/>
+                    </div>): "" }
+                    </div>
+                            
                 </Accordion>
               </div>
             </div>
