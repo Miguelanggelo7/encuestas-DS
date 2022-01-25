@@ -87,7 +87,7 @@ const Question_form = () => {
   const [questionRequired, setRequired] = useState("true");
 
   const [isPublic, setIsPublic] = useState(true);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+CAYAAABzwahEAAAAAXNSR0IArs4c6QAAAflJREFUaEPtmbGrwjAQxk8oODg4OBTqIDg4OHQodOyf7uQoKDg4OAgVOjh06CBYKLzHdZA+rfEleSbh5bvFoT1zv/vu0vYyWK1WX+ShDQDumepQ3DPBCYpDcU8ygFL3ROg7JhSH4p5kAKXuidDY3P6k1MMwpOl0SqPR6KOFc71eqSgKulwu2utogzP0YrHQDkTmDw6HA5VlKePydK82eJIkH1f6MWpWfrvd2gXPskwrAFXn9Xqt6tr6aSsOcK38yztDcfmcodS15uroccWSU3VDjytmDo8zxcQRelw1c4p+6HHFxDnT41VVtV9c8/n8Vyj/QvGmaWiz2RD/LpdLmkwmb+GdB2eYuq6Fn677/Z5YcbYgCIg/dYfDoRDeefDj8diWcJqmLdSjnU6ndqrSNZ7kMLzInAbnERGDszFMHMc/4DkhPE3pMx5lifrdWfC+KUl3TMXXucS5FV6ZqN+dBGeY3W5Ht9vtiWk2m1EURS00w4tM1O9Ognc3qz6w8Xh838zebd+v+t058PP5THmev+ORut7X706BizYrKdKemx/73SlwXTgZf4DLZKtzr/a7urcHCt4eIXH1mDw05CeG7rkZx6xd6ootZt0N4NYlMBwAFDeccOvLQXHrEhgOAIobTrj15aC4dQkMBwDFDSfc+nJQ3LoEhgPwVvFvqK6fYrFZR1EAAAAASUVORK5CYII=");
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -794,20 +794,11 @@ const Question_form = () => {
             
             <div className="photo_form"> 
               <label htmlFor="select-image" className="photo_form">
-                {!image ? (
-                  <Avatar
-                    style={{ margin: "auto", width: "50pt", height: "50pt" }}
-                    variant="rounded"
-                  >
-                    <ImageIcon style={{width: "30pt", height: "30pt"}}/>
-                  </Avatar>
-                ) : (
-                  <Avatar
-                    style={{ margin: "auto", width: "50pt", height: "50pt" }}
-                    variant="rounded"
-                    src={image}
-                  />
-                )}
+                <Avatar
+                  style={{ margin: "auto", width: "50pt", height: "50pt" }}
+                  variant="rounded"
+                  src={image}
+                />
               </label>
               <input
                 accept="image/*"
