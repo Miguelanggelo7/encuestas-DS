@@ -78,7 +78,7 @@ const Question_form = () => {
     const classes = useStyles();
     const [questions,setQuestions] =useState([]); 
     const [grade,setGrade] =useState(false); 
-    const [documentName,setDocName] =useState("untitled Document"); 
+    const [documentName, setDocName] =useState("untitled Document"); 
 
   const [documentDescription, setDocDesc] = useState("Add Description");
 
@@ -91,7 +91,7 @@ const Question_form = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const surveyId = uuid();
+  const [surveyId, setSurveyId] = useState(uuid());
 
   const ClickPublicOrPrivate = () => {
     setIsPublic(!isPublic);
@@ -203,9 +203,10 @@ const Question_form = () => {
     setQuestions(optionsOfQuestion);
   };
 
-      const editableGrade = () => {
-        setGrade(!grade);
-      }
+  const editableGrade = () => {
+    setGrade(!grade);
+  }
+
   const onDragEnd = (result) => {
     if (!result.destination) {
       return;
