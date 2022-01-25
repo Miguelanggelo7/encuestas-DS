@@ -55,8 +55,8 @@ import {
   LockOpenOutlined,
   LockOutlined,
 } from "@mui/icons-material";
-
-import { saveSurvey } from "../firebase/functions";
+import { v4 as uuid } from "uuid";
+import { saveSurvey, getCurrentUser, getSurveysByUser, saveSurveyImage } from "../firebase/functions";
 
 const Question_form = () => {
   const [questions, setQuestions] = useState([]);
@@ -66,13 +66,17 @@ const Question_form = () => {
 
   const [questionType, setType] = useState("radio");
   const [questionRequired, setRequired] = useState("true");
+
   const [isPublic, setIsPublic] = useState(true);
+  const [image, setImage] = useState(null);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
+  const surveyId = uuid();
+
   const ClickPublicOrPrivate = () => {
-    isPublic ? setIsPublic(false) : setIsPublic(true);
+    setIsPublic(!isPublic);
   };
 
   useEffect(() => {
@@ -104,22 +108,29 @@ const Question_form = () => {
   const saveQuestions = async () => {
     try {
       const data = {
-        ...questions.map(item => ({
+        questions: questions.map(item => ({
           title: item.questionText,
           type: item.questionType,
-          options: item.options,
-          required: item.required
+          options: item.options.map(op => op.optionText),
+          required: item.required,
+          public: isPublic
         })),
         title,
         description
       }
-
-      await saveSurvey(data);
+      await saveSurvey(surveyId ,data);
       alert("Encuesta guardada correctamente");
     } catch (err) {
       alert("No se pudo guardar la encuesta");
       console.log(err)
     }
+
+  };
+
+  const selectImage = async (e) => {
+      const foto = e.target.files[0];
+      const url = await saveSurveyImage(surveyId, foto);
+      setImage(url);
   };
 
   const addMoreQuestionField = () => {
@@ -782,15 +793,22 @@ const Question_form = () => {
                 <LockOutlined style={{ color: "#FF005C" }} />
               )}
             </IconButton>
-            <div className="photo_form">
-              <Avatar
-                style={{ margin: "auto", width: "50pt", height: "50pt" }}
-                variant="rounded"
-              >
-                <InsertIconPhoto
-                  style={{ color: "#fff", width: "25pt", height: "25pt" }}
+            
+            <div className="photo_form"> 
+              <label htmlFor="select-image">
+                <Avatar
+                  style={{ margin: "auto", width: "50pt", height: "50pt" }}
+                  variant="rounded"
+                  src={image}
                 />
-              </Avatar>
+              </label>
+              <input
+                accept="image/*"
+                type="file"
+                style={{ display: "none" }}
+                onChange={selectImage}
+                id="select-image"
+              />
             </div>
 
             <TextField
