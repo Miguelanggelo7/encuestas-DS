@@ -43,6 +43,14 @@ const getSurveysByUser =  (id) => {
   })
 }
 
+const getSurveyById =async  (userId, id) => {
+  const refSurveys = refDb(database, `usuarios/${userId}/encuestas/${id}`);
+  onValue(refSurveys, snapshot => {
+    const data = snapshot.val();
+    console.log(data);
+  });
+}
+
 const saveSurveyImage = async (surveyId, img) => {
   const refImg = refSt(storage, `encuestas/${surveyId}/`);
   await uploadBytes(refImg, img, { contentType: img.type });
@@ -80,5 +88,6 @@ export {
   getCurrentUser, 
   onAuthStateChanged,
   getSurveysByUser,
-  saveSurveyImage
+  saveSurveyImage,
+  getSurveyById
 };

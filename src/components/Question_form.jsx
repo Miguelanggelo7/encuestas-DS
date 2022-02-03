@@ -132,9 +132,10 @@ const Question_form = () => {
           type: item.questionType,
           options: item.options.map(op => op.optionText),
           required: item.required,
-          public: isPublic
+          grade: item.grade
         })),
         title,
+        public: isPublic,
         description
       }
       await saveSurvey(surveyId ,data);
@@ -143,7 +144,6 @@ const Question_form = () => {
       alert("No se pudo guardar la encuesta");
       console.log(err)
     }
-
   };
 
   const selectImage = async (e) => {
@@ -201,6 +201,13 @@ const Question_form = () => {
   const handleQuestionValue = (text, i) => {
     const optionsOfQuestion = [...questions];
     optionsOfQuestion[i].questionText = text;
+    setQuestions(optionsOfQuestion);
+  };
+
+  const handleGradeValue = (num, i) => {
+    const optionsOfQuestion = [...questions];
+
+    optionsOfQuestion[i].grade = parseInt(num);
     setQuestions(optionsOfQuestion);
   };
 
@@ -360,6 +367,7 @@ const Question_form = () => {
                       label="Nota"
                       type="number"
                       disabled={!grade}
+                      onChange={e => handleGradeValue(e.target.value, i)}
                       style={{position: 'absolute', right: '0', top: '0', marginRight: '30pt', marginTop: '5pt'}}
                       InputProps={{ inputProps: { min: 0, max: 100 } }}
                     />
@@ -407,7 +415,7 @@ const Question_form = () => {
                       
                         <div >
                             <div className="add_question_top">
-                                <input type="text" className="question" placeholder="Pregunta"    value={ques.questionText} onChange={(e)=>{handleQuestionValue(e.target.value, i)}}></input>
+                                <input type="text" className="question" placeholder="Pregunta" value={ques.questionText} onChange={(e)=>{handleQuestionValue(e.target.value, i)}}></input>
                                 <IconButton>
                                   <CropOriginalIcon style={{color:"#5f6368"}} />
                                 </IconButton>
@@ -491,6 +499,7 @@ const Question_form = () => {
                               {/* <Checkbox  color="primary" inputProps={{ 'aria-label': 'secondary checkbox' }} disabled/> */}
                               {ques.questionType != "text" ? (
                                 <input
+                                  disabled
                                   type={ques.questionType}
                                   style={{ marginRight: "10px" }}
                                 />

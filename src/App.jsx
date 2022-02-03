@@ -13,6 +13,7 @@ import {
 } from "@material-ui/core/styles";
 import Home from "./pages/Home";
 import SearchForms from "./pages/SearchForms";
+import User_form from './components/user_form';
 
 const theme = createMuiTheme({
   palette: {
@@ -42,7 +43,8 @@ function App() {
                   </Route>
                   <Route exact path="/CrearEncuesta" auth>
                     <Drawer />
-                    <Question_Form />
+                    
+                    <User_form/>
                   </Route>
                   <Route exact path="/BuscarEncuestas" auth>
                     <Drawer />
