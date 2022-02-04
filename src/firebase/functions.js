@@ -1,4 +1,4 @@
-import { ref as refDb, set, onValue } from "firebase/database";
+import { ref as refDb, set, onValue, get, child, getDatabase} from "firebase/database";
 import { getDownloadURL, ref as refSt, uploadBytes } from "firebase/storage";
 import { 
   createUserWithEmailAndPassword, 
@@ -15,9 +15,9 @@ import {
 import { v4 as uuid } from "uuid";
 import { database, auth, firestore, storage} from "./config";
 
-const saveSurvey = async (surveyId, data) => {
+const saveSurvey = async (surveyId, isPublic, data) => {
   try {
-    const refSurvey = refDb(database, `usuarios/${auth.currentUser.uid}/encuestas/${surveyId}`);
+    const refSurvey = refDb(database, `usuarios/${auth.currentUser.uid}/${isPublic ? "publicas":"privadas"}/${surveyId}`);
     await set(refSurvey, data);
 
   } catch (err) {
@@ -43,12 +43,16 @@ const getSurveysByUser =  (id) => {
   })
 }
 
-const getSurveyById =async  (userId, id) => {
-  const refSurveys = refDb(database, `usuarios/${userId}/encuestas/${id}`);
-  onValue(refSurveys, snapshot => {
-    const data = snapshot.val();
-    console.log(data);
-  });
+// const getSurveyById =async  (id) => {
+//   const data = await get(child(refDb(getDatabase()), `usuarios/${auth.currentUser}/encuestas/${id}`));
+//   const res = await data.val();
+//   return res;
+// }
+
+const getPublicSurveys = async  () => {
+  const usuariosData = await get(child(refDb(getDatabase()), `usuarios/`));
+  const usuarios = await usuariosData.val();
+  return usuarios
 }
 
 const saveSurveyImage = async (surveyId, img) => {
@@ -89,5 +93,7 @@ export {
   onAuthStateChanged,
   getSurveysByUser,
   saveSurveyImage,
-  getSurveyById
+  getPublicSurveys
+  // getSurveyById,
+  
 };

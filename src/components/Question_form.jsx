@@ -126,19 +126,33 @@ const Question_form = () => {
 
   const saveQuestions = async () => {
     try {
-      const data = {
-        questions: questions.map(item => ({
-          title: item.questionText,
-          type: item.questionType,
-          options: item.options.map(op => op.optionText),
-          required: item.required,
-          grade: item.grade
-        })),
-        title,
-        public: isPublic,
-        description
+      if (grade) {
+        const data = {
+          questions: questions.map(item => ({
+            title: item.questionText,
+            type: item.questionType,
+            options: item.options.map(op => op.optionText),
+            required: item.required,
+            grade: item.grade 
+          })),
+          title,
+          description
+        }
+        await saveSurvey(surveyId, isPublic, data);
+      } else {
+        const data = {
+          questions: questions.map(item => ({
+            title: item.questionText,
+            type: item.questionType,
+            options: item.options.map(op => op.optionText),
+            required: item.required,
+          })),
+          title,
+          description
+        }
+        await saveSurvey(surveyId, isPublic, data);
       }
-      await saveSurvey(surveyId ,data);
+
       alert("Encuesta guardada correctamente");
     } catch (err) {
       alert("No se pudo guardar la encuesta");

@@ -4,7 +4,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 
 import { useHistory } from "react-router-dom";
-import { getSurveyById, getCurrentUser } from '../firebase/functions';
+import { getPublicSurveys } from '../firebase/functions';
 import "./user_form.css";
 
 function User_form() {
@@ -14,6 +14,15 @@ function User_form() {
 
   const [answer, setAnswer] = useState([]);
   // var [{ questions, doc_name, doc_desc }, dispatch] = useStateValue();
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getPublicSurveys();
+      console.log(data);
+    }
+
+    getData()
+  }, [])
 
   function select(que, option) {
     // answer.map((ele)=>{
@@ -26,26 +35,6 @@ function User_form() {
     setAnswer(answer);
     console.log(answer);
   }
-
-  useEffect(() => {
-  //   questions.map((q) => {
-  //     answer.push({
-  //       question: q.questionText,
-  //       answer: " ",
-  //     });
-  //   });
-  //   questions.map((q, qindex) => {
-  //     quest.push({ header: q.questionText, key: q.questionText });
-  //   });
-  //   console.log(answer);
-    const getData =   () => {
-      console.log(getCurrentUser().uid)
-      const data =  getSurveyById(getCurrentUser().uid, "d775c07a-a93d-4914-b168-93b252a82599");
-      console.log(data);
-    }
-
-    getData();
-  }, []);
 
   const post_answer_data = {};
 
