@@ -87,21 +87,23 @@ export const Navigation = ({ toggle }) => {
           </div>
         </motion.li>
       </Link>
-      <motion.li
-        variants={variants}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="liDrawer"
-        onClick={closeDrawer}
-          onClick={toggle}
-      >
-        <div className="icon-placeholder" >
-          <Ballot className={classes.iconItem}/>
-        </div>
-        <div className="text-placeholder" >
-          Mis encuestas
-        </div>
-      </motion.li>
+      <Link className={classes.linkStyle} to="/MisEncuestas">
+        <motion.li
+          variants={variants}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="liDrawer"
+          onClick={closeDrawer}
+            onClick={toggle}
+        >
+          <div className="icon-placeholder" >
+            <Ballot className={classes.iconItem}/>
+          </div>
+          <div className="text-placeholder" >
+            Mis encuestas
+          </div>
+        </motion.li>
+      </Link>
       <Link className={classes.linkStyle} to="/BuscarEncuestas">
         <motion.li
           variants={variants}

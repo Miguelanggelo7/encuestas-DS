@@ -14,6 +14,7 @@ import {
 import Home from "./pages/Home";
 import SearchForms from "./pages/SearchForms";
 import User_form from './components/user_form';
+import MyForms from './pages/MyForms';
 
 const theme = createMuiTheme({
   palette: {
@@ -43,8 +44,11 @@ function App() {
                   </Route>
                   <Route exact path="/CrearEncuesta" auth>
                     <Drawer />
-                    
                     <User_form/>
+                  </Route>
+                  <Route exact path="/MisEncuestas" auth>
+                    <Drawer />
+                    <MyForms/>
                   </Route>
                   <Route exact path="/BuscarEncuestas" auth>
                     <Drawer />
