@@ -29,7 +29,8 @@ const useStyles = makeStyles({
   },
   graphSVG: {
     marginTop: '40pt',
-    width: '100%',
+    margin: 'auto',
+    width: '90%',
     height: '200pt',
   }
 });
