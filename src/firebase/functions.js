@@ -35,12 +35,10 @@ const register = async (email, password, data) => {
   }
 }
 
-const getSurveysByUser =  (id) => {
-  const refSurveys = refDb(database, `usuarios/${id}/encuestas`);
-  onValue(refSurveys, snapshot => {
-    const data = snapshot.val();
-    console.log(data);
-  })
+const getSurveysByUser =  async (id) => {
+  const surveys = await get(child(refDb(getDatabase()), `usuarios/${id}`));
+  const data = await surveys.val();
+  return data;
 }
 
 // const getSurveyById =async  (id) => {
@@ -80,8 +78,8 @@ const signOutUser = async () => {
   }
 }
 
-const getCurrentUser = () => {
-  return auth.currentUser;
+const getCurrentUid = () => {
+  return auth.currentUser.uid;
 }
 
 export { 
@@ -89,7 +87,7 @@ export {
   register, 
   login, 
   signOutUser, 
-  getCurrentUser, 
+  getCurrentUid, 
   onAuthStateChanged,
   getSurveysByUser,
   saveSurveyImage,

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { 
     makeStyles,
     Paper,
@@ -9,6 +9,7 @@ import {
 import {
   Search
 } from "@mui/icons-material";
+import { getSurveysByUser, getCurrentUid } from "../firebase/functions";
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -17,6 +18,27 @@ const useStyles = makeStyles({
 
 const MyForms = () => {
   const classes = useStyles();
+
+  // Si publicas y privadas = null, el usuario no ha creado ninguna encuesta
+  const [publicas, setPublicas] = useState(null);
+  const [privadas, setPrivadas] = useState(null);
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getSurveysByUser(getCurrentUid());
+      if (data) {
+        setPublicas(data.publicas);
+        setPrivadas(data.privadas);
+      }
+    };
+
+    getData();
+  }, []); 
+
+  if (publicas && privadas) {
+    console.log(publicas)
+    console.log(privadas)
+  }
 
   return (
     <div style={{textAlign: 'center'}}>
