@@ -839,6 +839,7 @@ const Question_form = () => {
               style={{ marginBottom: "20pt" }}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              inputProps={{ maxLength: 80 }}
             />
             <TextField
               label="Descripción"

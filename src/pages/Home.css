@@ -16,7 +16,7 @@
 .linkStyle:hover {
     color: #fff;
     background: #0185B6;
-    box-shadow: 0 0 10px #0185B6, 0 0 40px #0185B6, 0 0 80px #0185B6;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     transition-delay: 1s;
 }
 

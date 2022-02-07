@@ -1,6 +1,6 @@
 import react, { useEffect, useState } from 'react';
 import movies from "./movies.json";
-import {CardForm} from "./CardForm.jsx";
+import {CardMyForm} from "./CardMyForm.jsx";
 import { 
   makeStyles, 
   Paper,
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   },
 });
 
-function GridForms(){
+function GridMyForms(){
 
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -58,11 +58,11 @@ function GridForms(){
             return movie
           }
         }).map((movie) => (
-            <CardForm key = {movie.id} movie = {movie}/>
+            <CardMyForm key = {movie.id} movie = {movie}/>
         ))} 
       </ul>
     </div>
   );
 }
 
-export default GridForms;
+export default GridMyForms;

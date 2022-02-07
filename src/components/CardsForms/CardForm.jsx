@@ -68,7 +68,7 @@ export function CardForm({ movie }) {
               alt={movie.title , movie.release_date}
             />
             <CardContent>
-              <Typography  variant="body2" style={{height: '20pt'}}>
+              <Typography  variant="body2" style={{height: '30pt'}}>
                 {movie.title}
               </Typography>
             </CardContent>
