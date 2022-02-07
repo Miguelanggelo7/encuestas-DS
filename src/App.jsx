@@ -42,15 +42,15 @@ function App() {
                     <Drawer />
                     <Home />
                   </Route>
-                  <Route exact path="/CrearEncuesta" auth>
+                  <Route exact path="/crearEncuesta" auth>
                     <Drawer />
                     <User_form/>
                   </Route>
-                  <Route exact path="/MisEncuestas" auth>
+                  <Route exact path="/misEncuestas" auth>
                     <Drawer />
                     <MyForms/>
                   </Route>
-                  <Route exact path="/BuscarEncuestas" auth>
+                  <Route exact path="/buscarEncuestas" auth>
                     <Drawer />
                     <SearchForms/>
                   </Route>
