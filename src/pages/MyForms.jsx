@@ -10,6 +10,7 @@ import {
   Search
 } from "@mui/icons-material";
 import { getSurveysByUser, getCurrentUid } from "../firebase/functions";
+import GridMyForms from "../components/CardsForms/GridMyForms";
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -35,24 +36,10 @@ const MyForms = () => {
 
   return (
     <div style={{textAlign: 'center'}}>
-      <div style={{width: '220pt', margin: 'auto', marginTop: '60pt'}} >
-        <Paper
-          sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
-          elevation={3}
-        >
-          <InputBase
-            placeholder="Buscar mis encuestas"
-            inputProps={{ 'aria-label': 'Buscar mis encuestas' }}
-          />
-          <IconButton aria-label="search">
-            <Search />
-          </IconButton>
-        </Paper>
-      </div>
       <div>
         {
           surveys ? 
-          Object.keys(surveys).map((item) => <p>{item}</p>)
+          <GridMyForms surveys={surveys}/>
           : 
           <p>No hay nada flaco</p>
         }

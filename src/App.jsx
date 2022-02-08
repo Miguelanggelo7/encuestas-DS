@@ -44,7 +44,7 @@ function App() {
                   </Route>
                   <Route exact path="/crearEncuesta" auth>
                     <Drawer />
-                    <User_form/>
+                    <Question_Form/>
                   </Route>
                   <Route exact path="/misEncuestas" auth>
                     <Drawer />

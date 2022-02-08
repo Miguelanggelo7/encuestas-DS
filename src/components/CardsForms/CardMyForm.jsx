@@ -35,7 +35,9 @@ const useStyles = makeStyles({
     },
   },
   movieImage: {
-    backgroundColor: 'azure',
+    backgroundColor: '#bbb',
+    width: '250px',
+    height: '200px',
   },
   titlesito: {
       textOverflow: 'ellipsis',
@@ -44,11 +46,10 @@ const useStyles = makeStyles({
   }
 });
 
-export function CardMyForm({ movie }) {
+export function CardMyForm({ data }) {
 
   const classes = useStyles();
   const [like, setLike] = useState(false);
-  const imageUrl = "https://image.tmdb.org/t/p/w300" + movie.poster_path;
 
   const likeClick = e => {
     e.stopPropagation();
@@ -59,28 +60,36 @@ export function CardMyForm({ movie }) {
     <motion.li whileHover={{ scale: 1.03 }} transition={{ duration: 0.2 }} className={classes.cardForm}>
       <Card sx={{ maxWidth: 345 }}> 
           <ButtonBase style={{display: 'block'}}>
-            <CardHeader
+            {/* <CardHeader
               avatar={
-                <Avatar sx={{ bgcolor: "#0185B6"}} aria-label={movie.title}>
-                  {movie.persona.charAt(0).toUpperCase()}
+                <Avatar sx={{ bgcolor: "#0185B6"}} aria-label="prueba">
+                  a
                 </Avatar>
               }
-              title={movie.persona}
-              subheader={movie.release_date}
-            />
-            <CardMedia
-              className={classes.movieImage}
-              component="img"
-              height="200"
-              image={movie.backdrop_path}
-              alt={movie.title , movie.release_date}
-            />
+              title="XD"
+              subheader="doble xD"
+            /> */}
+            { data.image ?  
+              <CardMedia
+                  className={classes.movieImage}
+                  component="img"
+                  height="200"
+                  image={data.image}
+                  alt={data.image}
+                /> :
+                <CardMedia
+                  className={classes.movieImage}
+                  component="img"
+                  height="200"
+                  image="https://wpdirecto.com/wp-content/uploads/2017/08/alt-de-una-imagen.png"
+                />
+            }
             <CardContent>
               <Typography className={classes.titlesito} variant="body2">
-                {movie.title}
+                {data.title}
               </Typography>
             </CardContent>
-            <CardActions disableSpacing>
+            <CardActions disableSpacing style={{width: '100%'}}>
               <IconButton id="likesito" aria-label="add to favorites" onMouseDown={e => e.stopPropagation()} onClick={likeClick}>
                 {!like ? <FavoriteIcon /> : <FavoriteFill style={{color: '#FF005C'}}/>}
               </IconButton>

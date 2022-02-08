@@ -57,6 +57,7 @@ import {
   LockOutlined,
 } from "@mui/icons-material";
 import { v4 as uuid } from "uuid";
+import {Link} from "react-router-dom";
 import { saveSurvey, getCurrentUser, getSurveysByUser, saveSurveyImage } from "../firebase/functions";
 
 // ESTILOS
@@ -865,14 +866,16 @@ const Question_form = () => {
           </DragDropContext>
 
           <div className="save_form">
-            <Button
-              variant="contained"
-              color="primary"
-              style={{ fontSize: "14px" }}
-              onClick={saveQuestions}
-            >
-              Guardar
-            </Button>
+            <Link to="/" style={{textDecoration: 'none'}}>
+              <Button
+                variant="contained"
+                color="primary"
+                style={{ fontSize: "14px" }}
+                onClick={saveQuestions}
+              >
+                Guardar
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
