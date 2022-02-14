@@ -15,9 +15,9 @@ const useStyles = makeStyles({
   },
   title: {
     marginTop: '20pt',
-    textTransform: 'uppercase',
     letterSpacing: '4px',
-    fontSize: '24px',
+    fontSize: '2.2rem',
+    color: '#444',
   },
   divStyle: {
     "@media (min-width: 1200px)": {
@@ -40,7 +40,7 @@ const Login = () => {
 
   return (
     <div className={classes.containerHome}>
-      <h1 className={classes.title}>inicio</h1>
+      <h1 className={classes.title}>Inicio</h1>
       <Link id="crearButton" className="linkStyle" to="/CrearEncuesta">
         <span></span>
         <span></span>

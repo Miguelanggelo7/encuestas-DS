@@ -46,6 +46,10 @@ function App() {
                     <Drawer />
                     <Question_Form/>
                   </Route>
+                  <Route exact path="/encuestaPrueba" auth>
+                    <Drawer />
+                    <User_form/>
+                  </Route>
                   <Route exact path="/misEncuestas" auth>
                     <Drawer />
                     <MyForms/>
