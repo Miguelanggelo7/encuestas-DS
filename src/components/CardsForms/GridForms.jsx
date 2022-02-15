@@ -37,7 +37,6 @@ function GridForms(props){
   const classes = useStyles();
   return(
     <div>
-      {console.log(ref.child('users').child(''))}
       <div style={{width: '220pt', margin: 'auto', marginTop: '60pt'}} >
         <Paper
           sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
