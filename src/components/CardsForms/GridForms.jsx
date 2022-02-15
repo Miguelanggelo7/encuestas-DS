@@ -28,13 +28,16 @@ const useStyles = makeStyles({
   },
 });
 
-function GridForms(){
+function GridForms(props){
 
   const [searchTerm, setSearchTerm] = useState('');
+
+  const jsonData = Object.values(props.surveys);
 
   const classes = useStyles();
   return(
     <div>
+      {console.log(ref.child('users').child(''))}
       <div style={{width: '220pt', margin: 'auto', marginTop: '60pt'}} >
         <Paper
           sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
@@ -51,14 +54,14 @@ function GridForms(){
         </Paper>
       </div>
       <ul className = {classes.movieGrid}>
-        {movies.filter((movie)=>{
+        {jsonData.filter((data)=>{
           if(searchTerm == ""){
-            return movie
-          }else if (movie.title.toLowerCase().includes(searchTerm.toLowerCase()) || movie.persona.toLowerCase().includes(searchTerm.toLowerCase())){
-            return movie
+            return data
+          }else if (data.title.toLowerCase().includes(searchTerm.toLowerCase())){
+            return data
           }
-        }).map((movie) => (
-            <CardForm key = {movie.id} movie = {movie}/>
+        }).map((data) => (
+            <CardForm data = {data}/>
         ))} 
       </ul>
     </div>
