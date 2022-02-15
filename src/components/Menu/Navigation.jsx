@@ -16,7 +16,7 @@ const useStyles = makeStyles({
      marginTop: '6pt',
   },
   iconItemExit: {
-    color: '#FF005C', 
+    color: '#f34434', 
     margin: 'auto',
      marginLeft: '6pt', 
      marginTop: '6pt',
