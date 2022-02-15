@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { 
     makeStyles, 
@@ -15,11 +15,12 @@ const useStyles = makeStyles({
 
 const SearchForms = () => {
   const classes = useStyles();
+  const [encuestas, setEncuestas] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
       const data = await getPublicSurveys();
-      console.log(data)
+      setEncuestas(data)
     }
 
     getData()
