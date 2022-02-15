@@ -50,7 +50,18 @@ const getSurveysByUser =  async (id) => {
 const getPublicSurveys = async  () => {
   const usuariosData = await get(child(refDb(getDatabase()), `usuarios/`));
   const usuarios = await usuariosData.val();
-  return usuarios
+  const data = [];
+
+  for (let key in usuarios) {
+    if(usuarios[key].publicas){
+      for(let key1 in usuarios[key].publicas) {
+        usuarios[key].publicas[key1].id = key1;
+        data.push(usuarios[key].publicas[key1])
+      }
+    }
+  }
+
+  return data;
 }
 
 const saveSurveyImage = async (surveyId, img) => {
