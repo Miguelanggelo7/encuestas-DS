@@ -31,7 +31,12 @@ const SearchForms = () => {
 
   return (
     <div className={classes.containerSearch}>
-      <GridForms surveys={surveys}/>
+        {
+          surveys ? 
+          <GridForms surveys={surveys}/>
+          : 
+          <p>No hay nada flaco</p>
+        }
     </div>
   );
 };
