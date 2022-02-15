@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import { 
     makeStyles, 
@@ -15,12 +15,12 @@ const useStyles = makeStyles({
 
 const SearchForms = () => {
   const classes = useStyles();
-  const [encuestas, setEncuestas] = useState(null);
+  const [surveys, setSurveys] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
       const data = await getPublicSurveys();
-      setEncuestas(data)
+      setSurveys(data);
     }
 
     getData()
@@ -28,7 +28,12 @@ const SearchForms = () => {
 
   return (
     <div className={classes.containerSearch}>
-      <GridForms/>
+        {
+          surveys ? 
+          <GridForms surveys={surveys}/>
+          : 
+          <p>No hay nada flaco</p>
+        }
     </div>
   );
 };

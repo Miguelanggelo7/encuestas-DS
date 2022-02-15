@@ -32,15 +32,16 @@ const useStyles = makeStyles({
     },
   },
   movieImage: {
-    backgroundColor: 'azure',
+    backgroundColor: '#bbb',
+    width: '250px',
+    height: '200px',
   },
 });
 
-export function CardForm({ movie }) {
+export function CardForm({ data }) {
 
   const classes = useStyles();
   const [like, setLike] = useState(false);
-  const imageUrl = "https://image.tmdb.org/t/p/w300" + movie.poster_path;
 
   const likeClick = e => {
     e.stopPropagation();
@@ -53,23 +54,31 @@ export function CardForm({ movie }) {
           <ButtonBase style={{display: 'block'}}>
             <CardHeader
               avatar={
-                <Avatar sx={{ bgcolor: "#0185B6"}} aria-label={movie.title}>
-                  {movie.persona.charAt(0).toUpperCase()}
+                <Avatar sx={{ bgcolor: "#0185B6"}} aria-label={data.title}>
+                  A
                 </Avatar>
               }
-              title={movie.persona}
-              subheader={movie.release_date}
+              title="Alejandro"
+              subheader="01-01-2022"
             />
-            <CardMedia
-              className={classes.movieImage}
-              component="img"
-              height="200"
-              image={movie.backdrop_path}
-              alt={movie.title , movie.release_date}
-            />
+            { data.image ?  
+              <CardMedia
+                  className={classes.movieImage}
+                  component="img"
+                  height="200"
+                  image={data.image}
+                  alt={data.image}
+                /> :
+                <CardMedia
+                  className={classes.movieImage}
+                  component="img"
+                  height="200"
+                  image="https://wpdirecto.com/wp-content/uploads/2017/08/alt-de-una-imagen.png"
+                />
+            }
             <CardContent>
               <Typography  variant="body2" style={{height: '30pt'}}>
-                {movie.title}
+                {data.title}
               </Typography>
             </CardContent>
             <CardActions disableSpacing>

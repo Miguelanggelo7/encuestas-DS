@@ -28,9 +28,11 @@ const useStyles = makeStyles({
   },
 });
 
-function GridForms(){
+function GridForms(props){
 
   const [searchTerm, setSearchTerm] = useState('');
+
+  const jsonData = Object.values(props.surveys);
 
   const classes = useStyles();
   return(
@@ -51,14 +53,14 @@ function GridForms(){
         </Paper>
       </div>
       <ul className = {classes.movieGrid}>
-        {movies.filter((movie)=>{
+        {jsonData.filter((data)=>{
           if(searchTerm == ""){
-            return movie
-          }else if (movie.title.toLowerCase().includes(searchTerm.toLowerCase()) || movie.persona.toLowerCase().includes(searchTerm.toLowerCase())){
-            return movie
+            return data
+          }else if (data.title.toLowerCase().includes(searchTerm.toLowerCase())){
+            return data
           }
-        }).map((movie) => (
-            <CardForm key = {movie.id} movie = {movie}/>
+        }).map((data) => (
+            <CardForm data = {data}/>
         ))} 
       </ul>
     </div>
