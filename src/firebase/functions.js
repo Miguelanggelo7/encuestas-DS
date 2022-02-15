@@ -10,7 +10,8 @@ import {
   doc,
   collection,
   getDoc,
-  setDoc
+  setDoc,
+  getFirestore
 } from "firebase/firestore";
 import { v4 as uuid } from "uuid";
 import { database, auth, firestore, storage} from "./config";
@@ -54,8 +55,20 @@ const getPublicSurveys = async  () => {
 
   for (let key in usuarios) {
     if(usuarios[key].publicas){
+      const userData = await getDoc(doc(getFirestore(), "usuarios", key));
+
       for(let key1 in usuarios[key].publicas) {
+        try {
+          const image = await getDownloadURL(refSt(storage, `encuestas/${key1}`));
+          usuarios[key].publicas[key1].image = image;
+        } catch (err) {
+          if(err.code !== "storage/object-not-found"){
+            throw err;
+          }
+        }
+
         usuarios[key].publicas[key1].id = key1;
+        usuarios[key].publicas[key1].name = userData.data().name;
         data.push(usuarios[key].publicas[key1])
       }
     }
