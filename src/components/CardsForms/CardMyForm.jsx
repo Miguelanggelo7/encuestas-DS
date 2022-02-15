@@ -59,7 +59,7 @@ export function CardMyForm({ data }) {
   return (
     <motion.li whileHover={{ scale: 1.03 }} transition={{ duration: 0.2 }} className={classes.cardForm}>
       <Card sx={{ maxWidth: 345 }}> 
-          <ButtonBase style={{display: 'block'}}>
+          <ButtonBase style={{display: 'block', width: '100%'}}>
             {/* <CardHeader
               avatar={
                 <Avatar sx={{ bgcolor: "#0185B6"}} aria-label="prueba">

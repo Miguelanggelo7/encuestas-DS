@@ -15,6 +15,7 @@ import Home from "./pages/Home";
 import SearchForms from "./pages/SearchForms";
 import User_form from './components/user_form';
 import MyForms from './pages/MyForms';
+import NotFound from './pages/NotFound';
 
 const theme = createMuiTheme({
   palette: {
@@ -61,6 +62,7 @@ function App() {
                   <Route path="/auth">
                     <Login/>
                   </Route>
+                  <Route path='*' component={NotFound} />
                 </Switch>
               </Router>
             </div>
