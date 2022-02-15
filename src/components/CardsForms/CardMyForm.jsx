@@ -59,51 +59,51 @@ export function CardMyForm({ data }) {
   return (
     <motion.li whileHover={{ scale: 1.03 }} transition={{ duration: 0.2 }} className={classes.cardForm}>
       <Card sx={{ maxWidth: 345 }}> 
-          <ButtonBase style={{display: 'block', width: '100%'}}>
-            {/* <CardHeader
-              avatar={
-                <Avatar sx={{ bgcolor: "#0185B6"}} aria-label="prueba">
-                  a
-                </Avatar>
-              }
-              title="XD"
-              subheader="doble xD"
-            /> */}
-            { data.image ?  
-              <CardMedia
-                  className={classes.movieImage}
-                  component="img"
-                  height="200"
-                  image={data.image}
-                  alt={data.image}
-                /> :
+            <ButtonBase style={{display: 'block', width: '100%'}} >
+              {/* <CardHeader
+                avatar={
+                  <Avatar sx={{ bgcolor: "#0185B6"}} aria-label="prueba">
+                    a
+                  </Avatar>
+                }
+                title="XD"
+                subheader="doble xD"
+              /> */}
+              { data.image ?  
                 <CardMedia
-                  className={classes.movieImage}
-                  component="img"
-                  height="200"
-                  image="https://wpdirecto.com/wp-content/uploads/2017/08/alt-de-una-imagen.png"
-                />
-            }
-            <CardContent>
-              <Typography className={classes.titlesito} variant="body2">
-                {data.title}
-              </Typography>
-            </CardContent>
-            <CardActions disableSpacing style={{width: '100%'}}>
-              <IconButton id="likesito" aria-label="add to favorites" onMouseDown={e => e.stopPropagation()} onClick={likeClick}>
-                {!like ? <FavoriteIcon /> : <FavoriteFill style={{color: '#FF005C'}}/>}
-              </IconButton>
-              <IconButton id="edit" aria-label="edit" onMouseDown={e => e.stopPropagation()} >
-                <EditOutlinedIcon/>
-              </IconButton>
-              <IconButton id="copylink" aria-label="copylink" onMouseDown={e => e.stopPropagation()}>
-                <LinkOutlinedIcon/>
-              </IconButton>
-              <IconButton id="delete" aria-label="delete" onMouseDown={e => e.stopPropagation()}>
-                <DeleteOutlineOutlinedIcon/>
-              </IconButton>
-            </CardActions>
-          </ButtonBase>
+                    className={classes.movieImage}
+                    component="img"
+                    height="200"
+                    image={data.image}
+                    alt={data.image}
+                  /> :
+                  <CardMedia
+                    className={classes.movieImage}
+                    component="img"
+                    height="200"
+                    image="https://wpdirecto.com/wp-content/uploads/2017/08/alt-de-una-imagen.png"
+                  />
+              }
+              <CardContent>
+                <Typography className={classes.titlesito} variant="body2">
+                  {data.title}
+                </Typography>
+              </CardContent>
+              <CardActions disableSpacing style={{width: '100%'}}>
+                <IconButton id="likesito" aria-label="add to favorites" onMouseDown={e => e.stopPropagation()} onClick={likeClick}>
+                  {!like ? <FavoriteIcon /> : <FavoriteFill style={{color: '#FF005C'}}/>}
+                </IconButton>
+                <IconButton id="edit" aria-label="edit" onMouseDown={e => e.stopPropagation()} >
+                  <EditOutlinedIcon/>
+                </IconButton>
+                <IconButton id="copylink" aria-label="copylink" onMouseDown={e => e.stopPropagation()}>
+                  <LinkOutlinedIcon/>
+                </IconButton>
+                <IconButton id="delete" aria-label="delete" onMouseDown={e => e.stopPropagation()}>
+                  <DeleteOutlineOutlinedIcon/>
+                </IconButton>
+              </CardActions>
+            </ButtonBase>
       </Card>
     </motion.li>
   );

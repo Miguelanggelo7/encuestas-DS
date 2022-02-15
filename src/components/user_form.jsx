@@ -2,28 +2,30 @@ import { Button, Typography } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
-
-
-import { useHistory } from "react-router-dom";
-import { getPublicSurveys } from '../firebase/functions';
+import { useHistory, useParams } from "react-router-dom";
+import { getSurveyById } from '../firebase/functions';
+import { useQuery } from "./useQuery";
 import "./user_form.css";
 
 function User_form() {
   const quest = [];
   const post_answer = [];
   const history = useHistory();
-
+  const { id } = useParams();
+  const query = useQuery();
   const [answer, setAnswer] = useState([]);
   // var [{ questions, doc_name, doc_desc }, dispatch] = useStateValue();
 
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const data = await getPublicSurveys();
-  //     console.log(data);
-  //   }
+  useEffect(() => {
+    const getData = async () => {
+      const user = query.get("user");
+      const state = (query.get("public") === "private") ? "privadas" : "publicas";
+      const data = await getSurveyById(id, user, state);
+      console.log(data);
+    }
 
-  //   getData()
-  // }, [])
+    getData()
+  }, [])
 
   function select(que, option) {
     // answer.map((ele)=>{

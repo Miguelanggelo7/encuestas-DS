@@ -41,14 +41,14 @@ const Login = () => {
   return (
     <div className={classes.containerHome}>
       <h1 className={classes.title}>Inicio</h1>
-      <Link id="crearButton" className="linkStyle" to="/CrearEncuesta">
+      <Link id="crearButton" className="linkStyle" to="/crear-encuesta">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
         Crear encuesta
       </Link>
-      <Link id="encuestasButton" className="linkStyle" to="/MisEncuestas">
+      <Link id="encuestasButton" className="linkStyle" to="/mis-encuestas">
         <span></span>
         <span></span>
         <span></span>

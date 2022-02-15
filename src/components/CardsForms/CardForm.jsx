@@ -15,6 +15,7 @@ import {
   makeStyles, 
 } from "@material-ui/core";
 import { motion } from "framer-motion";
+import { useHistory } from "react-router-dom";
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -41,6 +42,7 @@ const useStyles = makeStyles({
 export function CardForm({ data }) {
 
   const classes = useStyles();
+  const history = useHistory();
   const [like, setLike] = useState(false);
 
   const likeClick = e => {
@@ -48,10 +50,14 @@ export function CardForm({ data }) {
     setLike(!like);
   }
 
+  const moveLink = () => {
+    history.push(`buscar/${data.id}?user=${data.userId}`);
+  }
+
   return (
     <motion.li whileHover={{ scale: 1.03 }} transition={{ duration: 0.2 }} className={classes.cardForm}>
       <Card sx={{ maxWidth: 345 }}> 
-          <ButtonBase style={{display: 'block', width: '100%'}}>
+          <ButtonBase style={{display: 'block', width: '100%'}} onClick={moveLink}>
             <CardHeader
               avatar={
                 <Avatar sx={{ bgcolor: "#0185B6"}} aria-label={data.title}>

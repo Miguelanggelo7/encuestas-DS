@@ -87,7 +87,7 @@ export const Navigation = ({ toggle }) => {
           </div>
         </motion.li>
       </Link>
-      <Link className={classes.linkStyle} to="/MisEncuestas">
+      <Link className={classes.linkStyle} to="/mis-encuestas">
         <motion.li
           variants={variants}
           whileHover={{ scale: 1.1 }}
@@ -104,7 +104,7 @@ export const Navigation = ({ toggle }) => {
           </div>
         </motion.li>
       </Link>
-      <Link className={classes.linkStyle} to="/BuscarEncuestas">
+      <Link className={classes.linkStyle} to="/buscar">
         <motion.li
           variants={variants}
           whileHover={{ scale: 1.1 }}

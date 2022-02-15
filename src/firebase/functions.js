@@ -42,11 +42,11 @@ const getSurveysByUser =  async (id) => {
   return data;
 }
 
-// const getSurveyById =async  (id) => {
-//   const data = await get(child(refDb(getDatabase()), `usuarios/${auth.currentUser}/encuestas/${id}`));
-//   const res = await data.val();
-//   return res;
-// }
+const getSurveyById = async  (id, user, state) => {
+  const data = await get(child(refDb(getDatabase()), `usuarios/${user}/${state}/${id}`));
+  const res = await data.val();
+  return res;
+}
 
 const getPublicSurveys = async  () => {
   const usuariosData = await get(child(refDb(getDatabase()), `usuarios/`));
@@ -68,6 +68,7 @@ const getPublicSurveys = async  () => {
         }
 
         usuarios[key].publicas[key1].id = key1;
+        usuarios[key].publicas[key1].userId = key;
         usuarios[key].publicas[key1].name = userData.data().name;
         data.push(usuarios[key].publicas[key1])
       }
@@ -115,7 +116,7 @@ export {
   onAuthStateChanged,
   getSurveysByUser,
   saveSurveyImage,
-  getPublicSurveys
-  // getSurveyById,
+  getPublicSurveys,
+  getSurveyById,
   
 };
