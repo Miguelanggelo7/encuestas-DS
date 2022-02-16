@@ -44,6 +44,15 @@ const MyForms = () => {
     const getData = async () => {
       const data = await getSurveysByUser(getCurrentUid());
       if (data) {
+        console.log(data)
+        for (let key in data.privadas) {
+          data.privadas[key].id = key;
+          data.privadas[key].state = "private";
+        }
+        for (let key in data.publicas) {
+          data.publicas[key].id = key;
+        }
+        console.log(data)
         setSurveys(Object.assign({}, data.publicas, data.privadas));
       }
       setLoading(false);

@@ -18,7 +18,7 @@ import {
 import { motion } from "framer-motion";
 import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-
+import { getCurrentUid } from "../../firebase/functions";
 // ESTILOS
 const useStyles = makeStyles({
   cardForm: {
@@ -54,6 +54,11 @@ export function CardMyForm({ data }) {
   const likeClick = e => {
     e.stopPropagation();
     setLike(!like);
+  }
+
+  const copyLink = () => {
+    const link = `localhost:3000/buscar/${data.id}?user=${getCurrentUid()}${(data.state === "private") ? `&state=private` : ''}`
+    console.log(link)
   }
 
   return (
@@ -96,7 +101,7 @@ export function CardMyForm({ data }) {
                 <IconButton id="edit" aria-label="edit" onMouseDown={e => e.stopPropagation()} >
                   <EditOutlinedIcon/>
                 </IconButton>
-                <IconButton id="copylink" aria-label="copylink" onMouseDown={e => e.stopPropagation()}>
+                <IconButton id="copylink" aria-label="copylink" onMouseDown={e => e.stopPropagation()} onClick={copyLink}>
                   <LinkOutlinedIcon/>
                 </IconButton>
                 <IconButton id="delete" aria-label="delete" onMouseDown={e => e.stopPropagation()}>

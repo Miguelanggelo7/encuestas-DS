@@ -36,7 +36,7 @@ function User_form() {
   useEffect(() => {
     const getData = async () => {
       const user = query.get("user");
-      const state = (query.get("public") === "private") ? "privadas" : "publicas";
+      const state = (query.get("state") === "private") ? "privadas" : "publicas";
       const data = await getSurveyById(id, user, state);
       setSurveys(data);
       console.log(data);
