@@ -1,4 +1,4 @@
-import { ref as refDb, set, onValue, get, child, getDatabase} from "firebase/database";
+import { ref as refDb, set, onValue, get, child, getDatabase, remove} from "firebase/database";
 import { getDownloadURL, ref as refSt, uploadBytes } from "firebase/storage";
 import { 
   createUserWithEmailAndPassword, 
@@ -40,6 +40,14 @@ const getSurveysByUser =  async (id) => {
   const surveys = await get(child(refDb(getDatabase()), `usuarios/${id}`));
   const data = await surveys.val();
   return data;
+}
+
+const deleteSurvey = async (id, state) => {
+  try {
+    await remove(refDb(getDatabase()), `usuarios/${auth.currentUser.uid}/${state}/${id}`);
+  } catch (err) {
+    throw 'cannot-delete';
+  }
 }
 
 const getSurveyById = async  (id, user, state) => {
@@ -177,5 +185,6 @@ export {
   getPublicSurveys,
   getSurveyById,
   saveAnswers,
-  getAnswersBySurvey
+  getAnswersBySurvey,
+  deleteSurvey
 };

@@ -18,6 +18,7 @@ import {
 import { motion } from "framer-motion";
 import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import { deleteSurvey } from "../../firebase/functions";
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -54,6 +55,15 @@ export function CardMyForm({ data }) {
   const likeClick = e => {
     e.stopPropagation();
     setLike(!like);
+  }
+
+  const deleteForm = async () => {
+    try {
+      const state = (data.state === "private") ? "privadas" : "publicas";
+      await deleteSurvey(data.id, state);
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -99,7 +109,7 @@ export function CardMyForm({ data }) {
                 <IconButton id="copylink" aria-label="copylink" onMouseDown={e => e.stopPropagation()}>
                   <LinkOutlinedIcon/>
                 </IconButton>
-                <IconButton id="delete" aria-label="delete" onMouseDown={e => e.stopPropagation()}>
+                <IconButton id="delete" aria-label="delete" onMouseDown={e => e.stopPropagation()} onClick={deleteForm}>
                   <DeleteOutlineOutlinedIcon/>
                 </IconButton>
               </CardActions>
