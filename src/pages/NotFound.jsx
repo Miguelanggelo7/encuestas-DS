@@ -3,6 +3,7 @@ import {ReactComponent as Notfound} from "../img/notfound.svg";
 import { 
     makeStyles, 
 } from "@material-ui/core";
+import Drawer from "../components/Menu/Drawer"
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -29,6 +30,7 @@ const NotFound = () => {
 
   return (
     <div className={classes.containerSearch}>
+        <Drawer />
         <Notfound class="image" className={classes.imgNoData}/>
         <h1 className={classes.title}>No se encontró la página</h1>
     </div>
