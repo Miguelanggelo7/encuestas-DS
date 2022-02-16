@@ -20,6 +20,17 @@ function User_form() {
   const [answer, setAnswer] = useState([]);
   const [surveys, setSurveys] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [selectedValue, setSelectedValue] = useState([]);
+
+  const handleChange = (event) => {
+    {console.log(event.target.value)}
+    {console.log(selectedValue)}
+    setSelectedValue([...selectedValue, event.target.value])
+    {console.log('')}
+    {console.log(selectedValue)}
+  };
+
+
   // var [{ questions, doc_name, doc_desc }, dispatch] = useStateValue();
 
   useEffect(() => {
@@ -90,13 +101,24 @@ function User_form() {
     // history.push(`/submitted`);
   }
 
-  const typeInput = (question, ques) => {
+  function isCheckedFunction(qindex, ques) {
+    selectedValue.map(item => {
+      return item === qindex + ques ?
+        true
+      :
+        false
+    })
+  }
+
+  const typeInput = (question, ques, qindex) => {
     switch (question.type) {
       case "radio":
         return (
           <>
             <div style={{display: 'inline-flex'}}>
-              <FormControlLabel value={ques} control={<Radio />}/>
+              <Radio
+                value={ques}
+              />
               <Typography
                 style={{
                   marginTop: '6pt',
@@ -117,7 +139,7 @@ function User_form() {
         return (
           <>
             <div style={{display: 'inline-flex'}}>
-              <Checkbox color="primary" style={{marginLeft: '-7pt' , marginRight: '15pt'}}/>
+              <Checkbox color="primary" />
               <Typography
                 style={{
                   marginTop: '6pt',
@@ -151,12 +173,33 @@ function User_form() {
               > 
                 {ques}
               </Typography>
-              <label htmlFor="contained-button-file">
-                <input style={{display: 'none'}} accept="image/*" id="contained-button-file" multiple type="file" />
-                <Button variant="contained" color="secondary" style={{color: '#fff'}}>
-                  Cargar archivo  
-                  <UploadFile style={{marginLeft: '10pt'}}/>
-                </Button>
+              <label htmlFor="contained-button-file" style={{display: 'inline-flex'}}>
+                <input style={{display: 'none'}} accept="file/*" id="contained-button-file" multiple type="file" />
+                  <Button
+                    variant="contained"
+                    component="label"
+                    color="secondary"
+                    style={{color: '#fff', marginRight: '10pt'}}
+                  >
+                    Cargar archivo
+                    <input
+                      type="file"
+                      hidden
+                    />
+                  </Button>
+                  <Typography
+                    style={{
+                      marginTop: '6pt',
+                      fontSize: "20px",
+                      fontWeight: "400",
+                      letterSpacing: ".1px",
+                      lineHeight: "24px",
+                      paddingBottom: "8px",
+                      fontSize: "14px",
+                    }}
+                  > 
+                    Ningún archivo seleccionado
+                  </Typography>
               </label>
             </div>
           </>
@@ -225,7 +268,7 @@ function User_form() {
                       <div style={{ marginBottom: "5px" }}>
                         <div style={{ display: "flex" }}>
                           <div className="form-check">
-                            {typeInput(question, ques)}
+                            {typeInput(question, ques, qindex)}
                           </div>
                         </div>
                       </div>
