@@ -173,34 +173,34 @@ function User_form() {
               > 
                 {ques}
               </Typography>
-              <label htmlFor="contained-button-file" style={{display: 'inline-flex'}}>
-                <input style={{display: 'none'}} accept="file/*" id="contained-button-file" multiple type="file" />
-                  <Button
-                    variant="contained"
-                    component="label"
-                    color="secondary"
-                    style={{color: '#fff', marginRight: '10pt'}}
-                  >
-                    Cargar archivo
-                    <input
-                      type="file"
-                      hidden
-                    />
-                  </Button>
-                  <Typography
-                    style={{
-                      marginTop: '6pt',
-                      fontSize: "20px",
-                      fontWeight: "400",
-                      letterSpacing: ".1px",
-                      lineHeight: "24px",
-                      paddingBottom: "8px",
-                      fontSize: "14px",
-                    }}
-                  > 
-                    Ningún archivo seleccionado
-                  </Typography>
-              </label>
+                  <div style={{display: 'inline-flex'}}>
+                    <Button
+                      variant="contained"
+                      component="label"
+                      color="secondary"
+                      style={{color: '#fff', marginRight: '10pt'}}
+                    >
+                      Cargar archivo
+                      <input
+                        type="file"
+                        hidden
+                        name={qindex+ques}
+                      />
+                    </Button>
+                    <Typography
+                      style={{
+                        marginTop: '6pt',
+                        fontSize: "20px",
+                        fontWeight: "400",
+                        letterSpacing: ".1px",
+                        lineHeight: "24px",
+                        paddingBottom: "8px",
+                        fontSize: "14px",
+                      }}
+                    > 
+                      {}
+                    </Typography>
+                  </div>
             </div>
           </>
         );
