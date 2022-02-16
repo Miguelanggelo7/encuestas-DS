@@ -54,11 +54,6 @@ export function CardMyForm({ data }) {
   const [like, setLike] = useState(false);
   const history = useHistory();
 
-  const likeClick = e => {
-    e.stopPropagation();
-    setLike(!like);
-  }
-
   const deleteForm = async () => {
     try {
       const state = (data.state === "private") ? "privadas" : "publicas";
@@ -109,9 +104,6 @@ export function CardMyForm({ data }) {
                 </Typography>
               </CardContent>
               <CardActions disableSpacing style={{width: '100%'}}>
-                <IconButton id="likesito" aria-label="add to favorites" onMouseDown={e => e.stopPropagation()} onClick={likeClick}>
-                  {!like ? <FavoriteIcon /> : <FavoriteFill style={{color: '#FF005C'}}/>}
-                </IconButton>
                 <IconButton id="edit" aria-label="edit" onMouseDown={e => e.stopPropagation()} >
                   <EditOutlinedIcon/>
                 </IconButton>
