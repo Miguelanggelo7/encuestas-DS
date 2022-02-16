@@ -58,7 +58,8 @@ export function CardMyForm({ data }) {
 
   const copyLink = () => {
     const link = `localhost:3000/buscar/${data.id}?user=${getCurrentUid()}${(data.state === "private") ? `&state=private` : ''}`
-    console.log(link)
+    navigator.clipboard.writeText(link);
+    alert('El link de invitación de la encuesta se ha copiado al portapapeles')
   }
 
   return (
