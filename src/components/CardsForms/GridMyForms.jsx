@@ -1,6 +1,6 @@
 import react, { useEffect, useState } from 'react';
 import movies from "./movies.json";
-import {CardForm} from "./CardForm.jsx";
+import {CardMyForm} from "./CardMyForm.jsx";
 import { 
   makeStyles, 
   Paper,
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   },
 });
 
-function GridForms(props){
+function GridMyForms(props){
 
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -61,11 +61,11 @@ function GridForms(props){
             return data
           }
         }).map((data) => (
-            <CardForm data = {data}/>
+            <CardMyForm data = {data}/>
         ))} 
       </ul>
     </div>
   );
 }
 
-export default GridForms;
+export default GridMyForms;

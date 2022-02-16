@@ -3,16 +3,35 @@ import { Link } from "react-router-dom";
 import { 
     makeStyles, 
     Button,
+    Divider,
 } from "@material-ui/core";
+import "./Home.css";
+import {ReactComponent as GraphSVG} from "../img/graficos.svg";
 
 // ESTILOS
 const useStyles = makeStyles({
   containerHome: {
     textAlign: 'center',
   },
-  linkStyle: {
-    textDecoration: 'none',
-    color: '#fff',
+  title: {
+    marginTop: '20pt',
+    letterSpacing: '4px',
+    fontSize: '2.2rem',
+    color: '#444',
+  },
+  divStyle: {
+    "@media (min-width: 1200px)": {
+      marginTop: '120pt'
+    },
+    "@media (max-width: 1199.9px)": {
+      marginTop: '200pt'
+    },
+  },
+  graphSVG: {
+    marginTop: '40pt',
+    margin: 'auto',
+    width: '90%',
+    height: '200pt',
   }
 });
 
@@ -21,12 +40,25 @@ const Login = () => {
 
   return (
     <div className={classes.containerHome}>
-      <h1>Inicio</h1>
-      <Link className={classes.linkStyle} to="/CrearEncuesta">
-        <Button variant="contained" color="primary">
-          Crea tu encuesta aqui
-        </Button> 
+      <h1 className={classes.title}>Inicio</h1>
+      <Link id="crearButton" className="linkStyle" to="/crear-encuesta">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Crear encuesta
       </Link>
+      <Link id="encuestasButton" className="linkStyle" to="/mis-encuestas">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Mis Encuestas
+      </Link>
+      <br/>
+      <Divider className={classes.divStyle}/>
+      <h1 className={classes.title}>Mis estadisticas</h1>
+      <GraphSVG class="image" className={classes.graphSVG}/>
     </div>
   );
 };

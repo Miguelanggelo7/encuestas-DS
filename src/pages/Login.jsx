@@ -115,7 +115,7 @@ const Login = () => {
 
   const registerUser = async () => {
     try {
-      await register(registerEmail, registerPassword, {name , escuela: "informatica"});
+      await register(registerEmail, registerPassword, { name });
 
     } catch (err) {
       // TODO: Handle error

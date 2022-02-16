@@ -86,23 +86,6 @@
   },
   {
     "adult": false,
-    "backdrop_path": "https://www.esan.edu.pe/conexion/actualidad/2018/06/04/1500x844_periodo_prueba.jpg",
-    "genre_ids": [28, 80, 53],
-    "id": 587996,
-    "original_language": "es",
-    "original_title": "Bajocero",
-    "overview": "When a prisoner transfer van is attacked, the cop in charge must fight those inside and outside while dealing with a silent foe: the icy temperatures.",
-    "popularity": 1813.556,
-    "poster_path": "/dWSnsAGTfc8U27bWsy2RfwZs0Bs.jpg",
-    "release_date": "2021-01-29",
-    "title": "Below Zero",
-    "video": false,
-    "vote_average": 6.4,
-    "vote_count": 448,
-    "persona": "nmarcano"
-  },
-  {
-    "adult": false,
     "backdrop_path": "https://www.paho.org/sites/default/files/styles/max_1500x1500/public/2020-11/hiv-caribbean-1500x933.jpg?itok=PZzVSreW",
     "genre_ids": [14, 28, 12],
     "id": 464052,

@@ -58,7 +58,7 @@ export default function Table({
     //Binary String
     XLSX.write(workBook,{bookType: "xlsx", type: "binary"})
     //Descargar
-    XLSX.writeFile(workBook, "ResultadosEncuesta.xlsx")
+    XLSX.writeFile(workBook, `${title}.xlsx`)
   }
 
   return (
