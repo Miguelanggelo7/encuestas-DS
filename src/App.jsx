@@ -64,12 +64,32 @@ function App() {
                     <Table style={{margin: '50pt'}} 
                       title={"Datos de prueba"}
                       columns={[
-                        { title: 'Adı', field: 'name' },
-                        { title: 'Soyadı', field: 'surname' },
-                        { title: 'Doğum Yılı', field: 'birthYear', type: 'numeric' },
-                        { title: 'Doğum Yeri', field: 'birthCity', lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' } }
+                        { title: 'Nombre de usuario', field: 'usuario' },
+                        { title: '¿Capital de Venezuela?', field: 'Pregunta1' },
+                        { title: '¿Capital de Argentina?', field: 'Pregunta2'},
+                        { title: '¿Capital de Chile?', field: 'Pregunta3' }
                       ]}
-                      data={[{ name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 }]}
+                      data={[{ usuario: 'Josemsaad', Pregunta1: 'Caracas', Pregunta2: "Buenos Aires", Pregunta3: "Santiago de Chile" } , 
+                             { usuario: 'Miguel_jsh', Pregunta1: 'El salto ángel', Pregunta2: "Buenos Aires", Pregunta3: "México DF" },
+                             { usuario: 'Edmond_jcm', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'Vanessa_lozano', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'JuanReina', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'NaGiral', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'dualipa', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'otrodato', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'semeacabaronlosnombres', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'nombre1', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'nombre2', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'nombre3', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'nombre4', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'nombre5', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'nombre6', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'nombre7', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'nombre8', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'nombre9', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'nombre10', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" },
+                             { usuario: 'nombre11', Pregunta1: 'Caracas', Pregunta2: "No sé", Pregunta3: "Santiago de Chile" }
+                           ]}
                     />
                   </Route>
                   <Route path="/auth">
