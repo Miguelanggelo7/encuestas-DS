@@ -89,16 +89,10 @@ function User_form() {
   }
 
   function submit() {
-    // answer.map((ele) => {
-    //   post_answer_data[ele.question] = ele.answer;
-    // });
 
-    // axios.post(`http://localhost:9000/student_response/${doc_name}`, {
-    //   column: quest,
-    //   answer_data: [post_answer_data],
-    // });
-
-    // history.push(`/submitted`);
+    history.push(`/`);
+    alert("Encuesta enviada correctamente");
+    
   }
 
   function isCheckedFunction(qindex, ques) {
