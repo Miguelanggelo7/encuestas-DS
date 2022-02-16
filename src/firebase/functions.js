@@ -78,6 +78,64 @@ const getPublicSurveys = async  () => {
   return data;
 }
 
+const getAnswerById = async (owner, surveyId, userId, state) => {
+  try {
+    await get(child(refDb(getDatabase()), 
+    `usuarios/${owner}/${state}/${surveyId}/respuestas/${userId}`));
+
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
+const saveAnswers = async (answers, userId, surveyId, state) => {
+  if (await getAnswerById(userId, surveyId, auth.currentUser.uid, state)) {
+    throw 'previously-completed';
+  }
+
+  try {
+    const refSurvey = refDb(getDatabase(), 
+      `usuarios/${userId}/${state}/${surveyId}/respuestas/${auth.currentUser.uid}`
+    );
+    await set(refSurvey, answers);
+  } catch (err) {
+    throw err;
+  }
+}
+
+const getAnswersBySurvey = async (survey) => {
+  const answersData = await get(child(refDb(getDatabase()), 
+  `usuarios/${survey.state}/${survey.userId}/respuestas`
+  ));
+  const answers = await answersData.val();
+  const data = [];
+  return answers;
+  // for (let key in answers) {
+  //   if(usuarios[key].publicas){
+  //     const userData = await getDoc(doc(getFirestore(), "usuarios", key));
+
+  //     for(let key1 in usuarios[key].publicas) {
+  //       try {
+  //         const image = await getDownloadURL(refSt(storage, `encuestas/${key1}`));
+  //         usuarios[key].publicas[key1].image = image;
+  //       } catch (err) {
+  //         if(err.code !== "storage/object-not-found"){
+  //           throw err;
+  //         }
+  //       }
+
+  //       usuarios[key].publicas[key1].id = key1;
+  //       usuarios[key].publicas[key1].userId = key;
+  //       usuarios[key].publicas[key1].name = userData.data().name;
+  //       data.push(usuarios[key].publicas[key1])
+  //     }
+  //   }
+  // }
+
+  // return data;
+}
+
 const saveSurveyImage = async (surveyId, img) => {
   const refImg = refSt(storage, `encuestas/${surveyId}/`);
   await uploadBytes(refImg, img, { contentType: img.type });
@@ -118,5 +176,6 @@ export {
   saveSurveyImage,
   getPublicSurveys,
   getSurveyById,
-  
+  saveAnswers,
+  getAnswersBySurvey
 };
