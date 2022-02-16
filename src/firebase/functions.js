@@ -46,7 +46,7 @@ const deleteSurvey = async (id, state) => {
   try {
     await remove(refDb(getDatabase()), `usuarios/${auth.currentUser.uid}/${state}/${id}`);
   } catch (err) {
-    throw 'cannot-delete';
+    throw err;
   }
 }
 

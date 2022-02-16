@@ -19,6 +19,7 @@ import { motion } from "framer-motion";
 import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { deleteSurvey, getCurrentUid } from "../../firebase/functions";
+import { useHistory } from "react-router-dom";
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -51,6 +52,7 @@ export function CardMyForm({ data }) {
 
   const classes = useStyles();
   const [like, setLike] = useState(false);
+  const history = useHistory();
 
   const likeClick = e => {
     e.stopPropagation();
@@ -61,6 +63,7 @@ export function CardMyForm({ data }) {
     try {
       const state = (data.state === "private") ? "privadas" : "publicas";
       await deleteSurvey(data.id, state);
+      history.push("/mis-encuestas");
     } catch (err) {
       console.log(err)
     }
@@ -115,9 +118,9 @@ export function CardMyForm({ data }) {
                 <IconButton id="copylink" aria-label="copylink" onMouseDown={e => e.stopPropagation()} onClick={copyLink}>
                   <LinkOutlinedIcon/>
                 </IconButton>
-                <IconButton id="delete" aria-label="delete" onMouseDown={e => e.stopPropagation()} onClick={deleteForm}>
+                {/* <IconButton id="delete" aria-label="delete" onMouseDown={e => e.stopPropagation()} onClick={deleteForm}>
                   <DeleteOutlineOutlinedIcon/>
-                </IconButton>
+                </IconButton> */}
               </CardActions>
             </ButtonBase>
       </Card>
